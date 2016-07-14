@@ -27,8 +27,8 @@ import matplotlib.pyplot as plt
 
 train_data_url = "http://www.inf.utfsm.cl/~jnancu/stanford-subset/polarity.train"
 test_data_url = "http://www.inf.utfsm.cl/~jnancu/stanford-subset/polarity.dev"
-train_data_f = urllib.urlretrieve(train_data_url, "polarity.train")
-test_data_f = urllib.urlretrieve(test_data_url, "polarity.dev")
+#train_data_f = urllib.urlretrieve(train_data_url, "polarity.train")
+#test_data_f = urllib.urlretrieve(test_data_url, "polarity.dev")
 
 #Encabezado y count de la data
 
@@ -371,13 +371,14 @@ test_accuracy = [item[1] for item in global_accuracies]
 
 ayuda=[]
 for i in range(1,len(test_accuracy)+1):
-	ayuda.append(i)
+    ayuda.append(i)
+    print i,test_accuracy[i-1], tr_accuracy[i-1]
 
 
 
 
-plt.plot( ayuda, test_accuracy)
-plt.plot( ayuda, tr_accuracy)
-plt.xticks(ayuda, plot_labels, rotation=90)
-plt.legend(['Test accuracies', 'Training Accuracies'], loc='upper left')
+ax=plt.plot( ayuda, test_accuracy)
+ax=plt.plot( ayuda, tr_accuracy)
+ax=plt.xticks(ayuda, plot_labels, rotation=90)
+ax=plt.legend(['Test accuracies', 'Training Accuracies'], loc='upper left')
 plt.show()
