@@ -12,8 +12,10 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics import classification_report
 from sklearn.naive_bayes import BernoulliNB, MultinomialNB
 from sklearn.linear_model import LogisticRegression
-from sklearn.svm import LinearSVC
+#from sklearn.svm import LinearSVC
+from prob_svm import LinearSVC_proba as LinearSVC
 import random
+
 
 # Parte a)
 
@@ -133,7 +135,7 @@ labels_test = np.asarray((test_df.Sentiment.astype(float)+1)/2.0)
 #Switch: 2: sólo hace stemming (se demora menos), 4: procesa además lemmatizer (más costoso)
 
 
-my_switch = 4
+my_switch = 1
 
 texts_train[0] = [word_extractor(text) for text in train_df.Text]
 texts_test[0] = [word_extractor(text) for text in test_df.Text]
@@ -242,6 +244,7 @@ for i in range(0,my_switch ,1):
 
 #Parte h)
 Cs = [0.01, 0.1, 10, 100, 1000]
+
 def do_LOGIT(x, y, xt, yt):
     start_t = time.time()
     Cs = [0.01, 0.1, 10, 100, 1000]
