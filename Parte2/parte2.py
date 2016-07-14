@@ -113,33 +113,39 @@ for i in range(0,len(teststring),1):
 
 #Parte d)
 
-texts_train=[0,0]
-texts_test=[0,0]
-vectorizer=[0,0]
-features_train=[0,0]
-features_test=[0,0]
-vocab=[0,0]
-dist_train=[0,0]
-count_train=[0,0]
-dist_test=[0,0]
-count_test=[0,0]
+texts_train=[0,0,0,0]
+texts_test=[0,0,0,0]
+vectorizer=[0,0,0,0]
+features_train=[0,0,0,0]
+features_test=[0,0,0,0]
+vocab=[0,0,0,0]
+dist_train=[0,0,0,0]
+count_train=[0,0,0,0]
+dist_test=[0,0,0,0]
+count_test=[0,0,0,0]
 
-#Preparacion datos: [0]: Stemming ,[1] Lematizar
+#Preparacion datos: [0]: Stemming , [1]: Stemming con preproc ,[2] Lematizar, [3] Lematizar con preproc
 
 labels_train = np.asarray((train_df.Sentiment.astype(float)+1)/2.0)
 labels_test = np.asarray((test_df.Sentiment.astype(float)+1)/2.0)
 
 
-#Switch: 1: sólo hace stemming (se demora menos), 2: procesa además lemmatizer (más costoso)
+#Switch: 2: sólo hace stemming (se demora menos), 4: procesa además lemmatizer (más costoso)
 
-my_switch = 2
 
-texts_train[0] = [word_extractor(word_preprocessing(text)) for text in train_df.Text]
-texts_test[0] = [word_extractor(word_preprocessing(text)) for text in test_df.Text]
+my_switch = 4
 
-if (i >= 2):
-    texts_train[1] = [word_extractor2(word_preprocessing(text)) for text in train_df.Text]
-    texts_test[1] = [word_extractor2(word_preprocessing(text)) for text in test_df.Text]
+texts_train[0] = [word_extractor(text) for text in train_df.Text]
+texts_test[0] = [word_extractor(text) for text in test_df.Text]
+texts_train[1] = [word_extractor(word_preprocessing(text)) for text in train_df.Text]
+texts_test[1] = [word_extractor(word_preprocessing(text)) for text in test_df.Text]
+
+
+if (my_switch >= 3):
+    texts_train[2] = [word_extractor2(text) for text in train_df.Text]
+    texts_test[2] = [word_extractor2(text) for text in test_df.Text]
+    texts_train[3] = [word_extractor2(word_preprocessing(text)) for text in train_df.Text]
+    texts_test[3] = [word_extractor2(word_preprocessing(text)) for text in test_df.Text]
 
 print "\nd)\n"
 
@@ -149,18 +155,29 @@ for i in range(0,my_switch ,1):
     vectorizer[i] = CountVectorizer(ngram_range=(1, 1), binary='False')
     vectorizer[i].fit(np.asarray(texts_train[i]))
     features_train[i] = vectorizer[i].transform(texts_train[i])
+
     features_test[i] = vectorizer[i].transform(texts_test[i])
     vocab[i] = vectorizer[i].get_feature_names()
 
 
     dist_train[i] = list(np.array(features_train[i].sum(axis=0)).reshape(-1,))
     count_train[i] = zip(vocab[i], dist_train[i])
-    print "Training data:"
+
+    if (i==0):
+        print "Top10 palabras:STEMMING:\n"
+    if (i==1):
+        print "Top10 palabras:STEMMING SIN STOPWORDS (PREPROCESADO):\n"
+    if (i==2):
+        print "Top10 palabras:LEMMATIZING:\n"
+    if (i==3):
+        print "Top10 palabras: LEMMATIZING SIN STOPWORDS (PREPROCESADO):\n"
+
+    print "\tTraining data:"
     print sorted(count_train[i], key=lambda x: x[1], reverse=True)[:100]
 
     dist_test[i] = list(np.array(features_test[i].sum(axis=0)).reshape(-1,))
     count_test[i] = zip(vocab[i], dist_test[i])
-    print "Test data:"
+    print "tTest data:"
     print sorted(count_test[i], key=lambda x: x[1], reverse=True)[:100]
 
 
@@ -183,12 +200,21 @@ def do_NAIVE_BAYES(x, y, xt, yt):
     score_the_model(model, x, y, xt, yt, "BernoulliNB")
     return model
 
-model = do_NAIVE_BAYES(features_train, labels_train, features_test, labels_test)
-test_pred = model.predict_proba(features_test)
-spl = random.sample(xrange(len(test_pred)), 15)
-for text, sentiment in zip(test_df.Text[spl], test_pred[spl]):
-    print sentiment, text
-
+print "\n f) Naive Bayes \n"
+for i in range(0,my_switch ,1):
+    if (i==0):
+        print "STEMMING:\n"
+    if (i==1):
+        print "STEMMING SIN STOPWORDS (PREPROCESADO):\n"
+    if (i==2):
+        print "LEMMATIZING:\n"
+    if (i==3):
+        print "LEMMATIZING SIN STOPWORDS (PREPROCESADO):\n"
+    model = do_NAIVE_BAYES(features_train[i], labels_train, features_test[i], labels_test)
+    test_pred = model.predict_proba(features_test[i])
+    spl = random.sample(xrange(len(test_pred)), 15)
+    for text, sentiment in zip(test_df.Text[spl], test_pred[spl]):
+        print sentiment, text
 
 #Parte g)
 def do_MULTINOMIAL(x, y, xt, yt):
@@ -197,38 +223,88 @@ def do_MULTINOMIAL(x, y, xt, yt):
     score_the_model(model, x, y, xt, yt, "MULTINOMIAL")
     return model
 
-# model = do_MULTINOMIAL(features_train, labels_train, features_test, labels_test)
-# test_pred = model.predict_proba(features_test)
-# spl = random.sample(xrange(len(test_pred)), 15)
-# for text, sentiment in zip(test_df.Text[spl], test_pred[spl]):
-#     print sentiment, text
-
+print "\n g) Naive Bayes Multinomial\n"
+for i in range(0,my_switch ,1):
+    if (i==0):
+        print "STEMMING:\n"
+    if (i==1):
+        print "STEMMING SIN STOPWORDS (PREPROCESADO):\n"
+    if (i==2):
+        print "LEMMATIZING:\n"
+    if (i==3):
+        print "LEMMATIZING SIN STOPWORDS (PREPROCESADO):\n"
+    model = do_MULTINOMIAL(features_train[i], labels_train, features_test[i], labels_test)
+    test_pred = model.predict_proba(features_test[i])
+    spl = random.sample(xrange(len(test_pred)), 15)
+    for text, sentiment in zip(test_df.Text[spl], test_pred[spl]):
+        print sentiment, text
 
 
 #Parte h)
+Cs = [0.01, 0.1, 10, 100, 1000]
 def do_LOGIT(x, y, xt, yt):
     start_t = time.time()
     Cs = [0.01, 0.1, 10, 100, 1000]
-    for C in Cs:
-        print "Usando C= %f" % C
-        model = LogisticRegression(penalty='l2', C=C)
-        model = model.fit(x, y)
-        score_the_model(model, x, y, xt, yt, "LOGISTIC")
+    model = []
+    for i in range(0,len(Cs),1):
+        print "Usando C= %f" % Cs[i]
+        model.append ( LogisticRegression(penalty='l2', C=Cs[i]) )
+        model[i] = model[i].fit(x, y)
+        score_the_model(model[i], x, y, xt, yt, "LOGISTIC")
+    return model
 
-# do_LOGIT(features_train, labels_train, features_test, labels_test)
+print "\n h) Regresión logística regularizada con penalizador norma l_2\n"
+for i in range(0,my_switch ,1):
+    if (i==0):
+        print "STEMMING:\n"
+    if (i==1):
+        print "STEMMING SIN STOPWORDS (PREPROCESADO):\n"
+    if (i==2):
+        print "LEMMATIZING:\n"
+    if (i==3):
+        print "LEMMATIZING SIN STOPWORDS (PREPROCESADO):\n"
+
+    models = do_LOGIT(features_train[i], labels_train, features_test[i], labels_test)
+
+    for j, model in enumerate(models):
+        print "\tC = "+str(Cs[j])+" :\n"
+        test_pred = model.predict_proba(features_test[i])
+        spl = random.sample(xrange(len(test_pred)), 15)
+        for text, sentiment in zip(test_df.Text[spl], test_pred[spl]):
+            print sentiment, text
 
 
 #Parte i)
 def do_SVM(x, y, xt, yt):
     Cs = [0.01, 0.1, 10, 100, 1000]
-    for C in Cs:
-        print "El valor de C que se esta probando: %f" % C
-        model = LinearSVC(C=C)
-        model = model.fit(x, y)
-        score_the_model(model, x, y, xt, yt, "SVM")
+    model = []
+    for i in range (0,len(Cs),1):
+        print "El valor de C que se esta probando: %f" % Cs[i]
+        model.append( LinearSVC(C=Cs[i]) )
+        model[i] = model[i].fit(x, y)
+        score_the_model(model[i], x, y, xt, yt, "SVM")
+    return model
 
+print "\n i) Support Vector Machine\n"
+for i in range(0,my_switch ,1):
+    if (i==0):
+        print "STEMMING:\n"
+    if (i==1):
+        print "STEMMING SIN STOPWORDS (PREPROCESADO):\n"
+    if (i==2):
+        print "LEMMATIZING:\n"
+    if (i==3):
+        print "LEMMATIZING SIN STOPWORDS (PREPROCESADO):\n"
 
-# do_SVM(features_train, labels_train, features_test, labels_test)
+    models = do_SVM(features_train[i], labels_train, features_test[i], labels_test)
+
+    for j, model in enumerate(models):
+        print "\tC = "+str(Cs[j])+" :\n"
+        test_pred = model.predict_proba(features_test[i])
+        spl = random.sample(xrange(len(test_pred)), 15)
+        for text, sentiment in zip(test_df.Text[spl], test_pred[spl]):
+            print sentiment, text
 
 #Parte j)
 #HERE BE DRAGONS
+
