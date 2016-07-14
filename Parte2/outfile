@@ -1,0 +1,2158 @@
+
+ a) Forma de los datos: Sentimientos negativos (-1) y positivos (+1)
+
+Datos training:
+-1    1784
+ 1    1770
+Name: Sentiment, dtype: int64
+
+Datos test:
+-1    1803
+ 1    1751
+Name: Sentiment, dtype: int64
+
+b)
+
+Preprocesado SIN stemming:
+love eat cake
+love eating cake
+loved eating cake
+love eating cake
+n't love eating cake
+stupid dogs
+n't really baad movie
+
+Preprocesado CON stemming:
+love eat cake
+love eat cake
+love eat cake
+love eat cake
+n't love eat cake
+stupid dog
+n't realli baad movi
+
+c)
+
+Preprocesado CON lematizar:
+love eat cake
+love eating cake
+loved eating cake
+love eating cake
+n't love eating cake
+stupid dog
+n't really baad movie
+
+d)
+
+Top10 palabras:STEMMING:
+
+	Training data:
+	[(u'the', 2023), (u'and', 1674), (u'of', 1544), (u'it', 1197), (u'to', 1123), (u'is', 997), (u'in', 805), (u'that', 764), (u'film', 574), (u'but', 548), (u'with', 494), (u'movi', 477), (u'for', 443), (u'as', 430), (u'thi', 425), (u'an', 403), (u'be', 366), (u'you', 290), (u'on', 277), (u'by', 276), (u'not', 269), (u'like', 268), (u'are', 253), (u'one', 245), (u'at', 225), (u'about', 224), (u'ha', 224), (u'all', 218), (u'have', 216), (u'more', 216), (u'than', 210), (u'make', 207), (u'from', 194), (u'hi', 179), (u'so', 177), (u'stori', 176), (u'if', 166), (u'there', 164), (u'charact', 161), (u'what', 156), (u'just', 154), (u'no', 148), (u'time', 148), (u'or', 147), (u'even', 144), (u'good', 144), (u'who', 144), (u'comedi', 142), (u'too', 139), (u'into', 136), (u'up', 134), (u'can', 133), (u'out', 133), (u'work', 130), (u'much', 128), (u'doe', 127), (u'perform', 125), (u'will', 123), (u'get', 116), (u'way', 115), (u'well', 115), (u'feel', 114), (u'look', 111), (u'most', 110), (u'director', 108), (u'funni', 103), (u'do', 102), (u'littl', 102), (u'some', 102), (u'onli', 101), (u'he', 95), (u'take', 94), (u'veri', 93), (u'enough', 92), (u'never', 92), (u'we', 92), (u'best', 88), (u'been', 86), (u'end', 85), (u'wa', 85), (u'which', 84), (u'thing', 83), (u'when', 83), (u'entertain', 82), (u'love', 81), (u'your', 81), (u'life', 80), (u'their', 80), (u'us', 80), (u'would', 79), (u'seem', 78), (u'they', 78), (u'bad', 77), (u'watch', 77), (u'audienc', 75), (u'could', 75), (u'see', 73), (u'act', 72), (u'come', 72), (u'drama', 72)]
+	Test data:
+	[(u'the', 2023), (u'and', 1647), (u'of', 1548), (u'it', 1237), (u'to', 1178), (u'is', 1027), (u'that', 804), (u'in', 790), (u'film', 572), (u'but', 535), (u'movi', 530), (u'with', 519), (u'thi', 514), (u'as', 427), (u'for', 418), (u'an', 407), (u'be', 346), (u'you', 308), (u'on', 300), (u'not', 281), (u'about', 253), (u'one', 250), (u'like', 248), (u'by', 246), (u'than', 239), (u'ha', 238), (u'from', 228), (u'more', 228), (u'are', 219), (u'have', 218), (u'at', 212), (u'all', 211), (u'stori', 196), (u'make', 187), (u'or', 185), (u'hi', 184), (u'if', 180), (u'so', 177), (u'charact', 171), (u'time', 163), (u'who', 154), (u'most', 152), (u'out', 152), (u'up', 149), (u'what', 147), (u'into', 141), (u'there', 141), (u'just', 137), (u'good', 134), (u'too', 133), (u'doe', 132), (u'even', 131), (u'comedi', 129), (u'will', 125), (u'much', 124), (u'no', 124), (u'can', 117), (u'work', 116), (u'director', 114), (u'some', 113), (u'do', 110), (u'perform', 110), (u'well', 106), (u'feel', 104), (u'way', 102), (u'get', 101), (u'look', 101), (u'onli', 100), (u'he', 97), (u'their', 94), (u'funni', 93), (u'love', 93), (u'may', 93), (u'would', 92), (u'enough', 90), (u'littl', 89), (u'seem', 85), (u'go', 84), (u'been', 83), (u'thing', 83), (u'when', 83), (u'new', 82), (u'take', 81), (u'they', 78), (u'your', 78), (u'act', 77), (u'two', 77), (u'ani', 76), (u'interest', 76), (u'off', 76), (u'someth', 76), (u'come', 75), (u'end', 75), (u'give', 75), (u'see', 75), (u'year', 75), (u'better', 74), (u'plot', 74), (u'which', 74), (u'should', 73)]
+Top10 palabras:STEMMING SIN STOPWORDS (PREPROCESADO):
+
+	Training data:
+	[(u'film', 574), (u'movi', 477), (u'like', 268), (u'one', 245), (u'make', 207), (u'stori', 176), (u'charact', 161), (u'time', 148), (u'even', 144), (u'good', 144), (u'comedi', 142), (u'work', 130), (u'much', 128), (u'perform', 125), (u'get', 116), (u'way', 115), (u'well', 115), (u'feel', 114), (u'look', 111), (u'director', 108), (u'funni', 103), (u'littl', 102), (u'take', 94), (u'enough', 92), (u'never', 92), (u'best', 88), (u'end', 85), (u'thing', 83), (u'entertain', 82), (u'love', 81), (u'life', 80), (u'us', 80), (u'would', 79), (u'seem', 78), (u'bad', 77), (u'watch', 77), (u'audienc', 75), (u'could', 75), (u'see', 73), (u'act', 72), (u'come', 72), (u'drama', 72), (u'noth', 72), (u'may', 71), (u'cast', 70), (u'year', 69), (u'fun', 67), (u'plot', 67), (u'made', 66), (u'realli', 66), (u'minut', 64), (u'everi', 63), (u'filmmak', 63), (u'without', 63), (u'action', 62), (u'give', 62), (u'go', 62), (u'interest', 62), (u'long', 62), (u'play', 62), (u'two', 62), (u'heart', 59), (u'big', 58), (u'someth', 58), (u'effect', 56), (u'great', 56), (u'humor', 56), (u'keep', 56), (u'mani', 56), (u'though', 55), (u'also', 54), (u'enjoy', 54), (u'peopl', 54), (u'show', 54), (u'direct', 53), (u'emot', 53), (u'kind', 53), (u'live', 53), (u'sens', 53), (u'lot', 52), (u'might', 52), (u'moment', 52), (u'new', 52), (u'scene', 52), (u'ultim', 52), (u'point', 51), (u'actor', 50), (u'far', 50), (u'often', 50), (u'tale', 50), (u'tri', 49), (u're', 48), (u'world', 48), (u'becom', 47), (u'first', 47), (u'power', 47), (u'still', 47), (u'anoth', 46), (u'ever', 46), (u'find', 46)]
+	Test data:
+	[(u'film', 572), (u'movi', 530), (u'one', 250), (u'like', 248), (u'stori', 196), (u'make', 187), (u'charact', 171), (u'time', 163), (u'good', 134), (u'even', 131), (u'comedi', 129), (u'much', 124), (u'work', 116), (u'director', 114), (u'perform', 110), (u'well', 106), (u'feel', 104), (u'way', 102), (u'get', 101), (u'look', 101), (u'funni', 93), (u'love', 93), (u'may', 93), (u'would', 92), (u'enough', 90), (u'littl', 89), (u'seem', 85), (u'go', 84), (u'thing', 83), (u'new', 82), (u'take', 81), (u'act', 77), (u'two', 77), (u'interest', 76), (u'someth', 76), (u'come', 75), (u'end', 75), (u'give', 75), (u'see', 75), (u'year', 75), (u'better', 74), (u'plot', 74), (u're', 72), (u'best', 71), (u'us', 71), (u'bad', 70), (u'life', 70), (u'still', 70), (u'drama', 69), (u'entertain', 69), (u'watch', 69), (u'realli', 68), (u'could', 67), (u'never', 66), (u'action', 65), (u'great', 64), (u'minut', 64), (u'cast', 63), (u'first', 63), (u'less', 61), (u'made', 60), (u'mani', 59), (u'origin', 59), (u'screen', 59), (u'audienc', 58), (u'direct', 58), (u'heart', 57), (u'noth', 57), (u'anoth', 56), (u'ever', 56), (u'script', 56), (u'big', 55), (u'long', 55), (u'need', 55), (u'peopl', 55), (u'play', 55), (u'lack', 54), (u'live', 54), (u'pictur', 54), (u'sens', 54), (u'emot', 53), (u'everi', 53), (u'find', 53), (u'know', 52), (u'actor', 51), (u'ca', 51), (u'charm', 51), (u'enjoy', 51), (u'set', 51), (u'turn', 51), (u'humor', 50), (u'filmmak', 49), (u'human', 49), (u'might', 49), (u'show', 49), (u'star', 49), (u'thriller', 49), (u'tri', 49), (u'american', 48), (u'fun', 48)]
+Top10 palabras:LEMMATIZING:
+
+	Training data:
+	[(u'the', 2023), (u'and', 1674), (u'of', 1544), (u'it', 1197), (u'to', 1122), (u'is', 997), (u'in', 805), (u'that', 764), (u'film', 566), (u'but', 548), (u'with', 494), (u'movie', 481), (u'for', 443), (u'this', 424), (u'an', 403), (u'be', 317), (u'you', 291), (u'by', 276), (u'on', 276), (u'not', 266), (u'are', 253), (u'one', 246), (u'like', 245), (u'at', 225), (u'about', 224), (u'ha', 224), (u'all', 218), (u'more', 216), (u'than', 210), (u'have', 207), (u'from', 194), (u'make', 183), (u'his', 179), (u'so', 177), (u'story', 176), (u'if', 166), (u'there', 166), (u'character', 163), (u'what', 156), (u'just', 154), (u'no', 148), (u'or', 147), (u'comedy', 145), (u'who', 144), (u'even', 143), (u'time', 143), (u'good', 141), (u'too', 139), (u'into', 136), (u'out', 132), (u'can', 130), (u'up', 129), (u'much', 128), (u'doe', 127), (u'will', 119), (u'way', 115), (u'performance', 114), (u'well', 113), (u'work', 113), (u'most', 110), (u'director', 108), (u'life', 105), (u'little', 103), (u'some', 103), (u'funny', 102), (u'get', 102), (u'only', 102), (u'feel', 96), (u'he', 95), (u'very', 94), (u'enough', 92), (u'never', 92), (u'we', 92), (u'do', 91), (u'look', 89), (u'best', 88), (u'been', 86), (u'wa', 85), (u'which', 84), (u'thing', 83), (u'when', 83), (u'their', 80), (u'your', 80), (u'take', 79), (u'would', 79), (u'they', 78), (u'audience', 76), (u'bad', 76), (u'could', 75), (u'drama', 72), (u'nothing', 72), (u'her', 71), (u'made', 71), (u'may', 71), (u'while', 71), (u'through', 70), (u'year', 68), (u'action', 67), (u'fun', 67), (u'really', 66)]
+	Test data:
+	[(u'the', 2023), (u'and', 1647), (u'of', 1548), (u'it', 1237), (u'to', 1178), (u'is', 1027), (u'that', 804), (u'in', 790), (u'film', 558), (u'movie', 540), (u'but', 535), (u'with', 519), (u'this', 514), (u'for', 418), (u'an', 407), (u'you', 308), (u'be', 304), (u'on', 300), (u'not', 278), (u'about', 253), (u'one', 250), (u'by', 246), (u'than', 239), (u'ha', 238), (u'like', 230), (u'more', 229), (u'from', 228), (u'are', 219), (u'at', 212), (u'all', 211), (u'have', 205), (u'story', 197), (u'or', 185), (u'his', 184), (u'if', 180), (u'so', 177), (u'character', 175), (u'time', 165), (u'make', 161), (u'who', 154), (u'most', 152), (u'out', 150), (u'what', 147), (u'up', 144), (u'there', 143), (u'into', 141), (u'just', 137), (u'comedy', 134), (u'too', 133), (u'doe', 132), (u'good', 132), (u'even', 129), (u'much', 124), (u'no', 124), (u'will', 121), (u'can', 116), (u'director', 113), (u'some', 113), (u'well', 105), (u'work', 104), (u'way', 102), (u'do', 101), (u'only', 100), (u'he', 97), (u'performance', 95), (u'funny', 94), (u'may', 93), (u'their', 93), (u'get', 92), (u'would', 92), (u'enough', 90), (u'life', 90), (u'little', 90), (u'feel', 85), (u'been', 83), (u'thing', 83), (u'when', 83), (u'new', 82), (u'they', 78), (u'your', 78), (u'two', 77), (u'any', 76), (u'love', 76), (u'off', 76), (u'something', 76), (u'go', 75), (u'year', 75), (u'better', 74), (u'take', 74), (u'which', 74), (u'look', 73), (u'should', 73), (u're', 72), (u'them', 72), (u'best', 71), (u'we', 71), (u'bad', 70), (u'still', 70), (u'while', 70), (u'action', 69)]
+Top10 palabras: LEMMATIZING SIN STOPWORDS (PREPROCESADO):
+
+	Training data:
+	[(u'film', 566), (u'movie', 481), (u'one', 246), (u'like', 245), (u'make', 183), (u'story', 176), (u'character', 163), (u'comedy', 145), (u'even', 143), (u'time', 143), (u'good', 141), (u'much', 128), (u'way', 115), (u'performance', 114), (u'well', 113), (u'work', 113), (u'director', 108), (u'life', 105), (u'little', 103), (u'funny', 102), (u'get', 102), (u'feel', 96), (u'enough', 92), (u'never', 92), (u'look', 89), (u'best', 88), (u'thing', 83), (u'take', 79), (u'would', 79), (u'audience', 76), (u'bad', 76), (u'could', 75), (u'drama', 72), (u'nothing', 72), (u'made', 71), (u'may', 71), (u'year', 68), (u'action', 67), (u'fun', 67), (u'really', 66), (u'love', 64), (u'minute', 64), (u'see', 64), (u'every', 63), (u'without', 63), (u'come', 62), (u'two', 62), (u'end', 60), (u'long', 60), (u'cast', 59), (u'plot', 59), (u'big', 58), (u'something', 58), (u'give', 56), (u'many', 56), (u'though', 55), (u'also', 54), (u'great', 54), (u'people', 54), (u'tale', 53), (u'go', 52), (u'heart', 52), (u'keep', 52), (u'kind', 52), (u'lot', 52), (u'might', 52), (u'moment', 52), (u'scene', 52), (u'humor', 51), (u'new', 51), (u'far', 50), (u'often', 50), (u'sense', 50), (u'point', 49), (u'actor', 48), (u're', 48), (u'show', 48), (u'world', 48), (u'ever', 47), (u'first', 47), (u'still', 47), (u'thriller', 47), (u'another', 46), (u'documentary', 46), (u'hard', 46), (u'hollywood', 46), (u'old', 46), (u'picture', 46), (u'yet', 46), (u'better', 45), (u'seems', 45), (u'self', 45), (u'entertaining', 44), (u'find', 44), (u'full', 44), (u'real', 44), (u'ultimately', 44), (u'filmmaker', 42), (u'material', 42), (u'script', 42)]
+	Test data:
+	[(u'film', 558), (u'movie', 540), (u'one', 250), (u'like', 230), (u'story', 197), (u'character', 175), (u'time', 165), (u'make', 161), (u'comedy', 134), (u'good', 132), (u'even', 129), (u'much', 124), (u'director', 113), (u'well', 105), (u'work', 104), (u'way', 102), (u'performance', 95), (u'funny', 94), (u'may', 93), (u'get', 92), (u'would', 92), (u'enough', 90), (u'life', 90), (u'little', 90), (u'feel', 85), (u'thing', 83), (u'new', 82), (u'two', 77), (u'love', 76), (u'something', 76), (u'go', 75), (u'year', 75), (u'better', 74), (u'take', 74), (u'look', 73), (u're', 72), (u'best', 71), (u'bad', 70), (u'still', 70), (u'action', 69), (u'drama', 69), (u'come', 68), (u'made', 68), (u'really', 68), (u'could', 67), (u'plot', 67), (u'see', 67), (u'never', 66), (u'give', 65), (u'first', 63), (u'le', 63), (u'minute', 63), (u'great', 62), (u'audience', 59), (u'many', 59), (u'nothing', 57), (u'another', 56), (u'ever', 56), (u'big', 55), (u'end', 55), (u'picture', 55), (u'screen', 55), (u'cast', 54), (u'every', 54), (u'long', 54), (u'people', 54), (u'sense', 54), (u'interesting', 52), (u'script', 52), (u'actor', 51), (u'ca', 51), (u'thriller', 51), (u'know', 50), (u'original', 50), (u'heart', 49), (u'might', 49), (u'need', 49), (u'fun', 48), (u'lack', 48), (u'old', 48), (u'seems', 48), (u'american', 47), (u'find', 47), (u'real', 47), (u'woman', 47), (u'full', 46), (u'though', 46), (u'll', 45), (u'man', 45), (u'without', 45), (u'world', 45), (u'fan', 44), (u'far', 44), (u'point', 44), (u'rather', 44), (u'hard', 43), (u'idea', 43), (u'kind', 43), (u'moment', 43), (u'often', 43)]
+
+ /*Parte e) no imprime nada*/ 
+
+
+ f) Naive Bayes 
+
+STEMMING:
+
+Training Accuracy BernoulliNB: 0.938098
+Test Accuracy BernoulliNB: 0.762173
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.77      0.76      0.77      1803
+          -       0.76      0.76      0.76      1751
+
+avg / total       0.76      0.76      0.76      3554
+
+[ 0.00300545  0.99699455] either a fascinating study of the relationship between mothers and their children or a disturbing story about sociopaths and their marks .
+
+[ 0.59408186  0.40591814] if you liked such movies as notting hill , four weddings and a funeral , bridget jones' diary or high fidelity , then you won't want to miss about a boy .
+
+[ 0.03314511  0.96685489] washington overcomes the script's flaws and envelops the audience in his character's anguish , anger and frustration .
+
+[ 0.03709573  0.96290427] . . . a quietly introspective portrait of the self-esteem of employment and the shame of losing a job . . .
+
+[ 0.11457888  0.88542112] director andrew niccol . . . demonstrates a wry understanding of the quirks of fame . his healthy sense of satire is light and fun . . . .
+
+[ 0.00324637  0.99675363] an enchanting spectacular for potter fans anxious to ride the hogwarts express toward a new year of magic and mischief .
+
+[ 0.2180845  0.7819155] i admired it , particularly that unexpected downer of an ending .
+
+[ 0.11007931  0.88992069] it challenges , this nervy oddity , like modern art should .
+
+[ 0.01238405  0.98761595] [stephen] earnhart's film is more about the optimism of a group of people who are struggling to give themselves a better lot in life than the ones they currently have .
+
+[ 0.75735009  0.24264991] fluffy neo-noir hiding behind cutesy film references .
+
+[ 0.79512223  0.20487777] all the movie's narrative gymnastics can't disguise the fact that it's inauthentic at its core and that its story just isn't worth telling .
+
+[ 0.57884862  0.42115138] denver should not get the first and last look at one of the most triumphant performances of vanessa redgrave's career . it deserves to be seen everywhere .
+
+[ 0.8820152  0.1179848] even during the climactic hourlong cricket match , boredom never takes hold .
+
+[ 0.05556548  0.94443452] the film is insightful about kissinger's background and history .
+
+[ 0.84774993  0.15225007] may be the most undeserving victim of critical overkill since town and country .
+
+STEMMING SIN STOPWORDS (PREPROCESADO):
+
+Training Accuracy BernoulliNB: 0.942319
+Test Accuracy BernoulliNB: 0.751759
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.76      0.75      0.75      1803
+          -       0.75      0.75      0.75      1751
+
+avg / total       0.75      0.75      0.75      3554
+
+[ 0.05543555  0.94456445] while tattoo borrows heavily from both seven and the silence of the lambs , it manages to maintain both a level of sophisticated intrigue and human-scale characters that suck the audience in .
+
+[ 0.97012999  0.02987001] many went to see the attraction for the sole reason that it was hot outside and there was air conditioning inside , and i don't think that a . c . will help this movie one bit .
+
+[ 0.17870751  0.82129249] the entire cast is extraordinarily good .
+
+[ 0.90784853  0.09215147] perfectly enjoyable , instantly forgettable , nothing to write home about .
+
+[ 0.99579443  0.00420557] becomes the last thing you would expect from a film with this title or indeed from any plympton film : boring .
+
+[  9.99377222e-01   6.22778061e-04] should have gone straight to video . it looks like an action movie , but it's so poorly made , on all levels , that it doesn't even qualify as a spoof of such .
+
+[ 0.85356577  0.14643423] the script is high on squaddie banter , low on shocks .
+
+[ 0.01178217  0.98821783] often hilarious , well-shot and , importantly , entertaining , hell house is a fascinating document of an event that has to be seen to be believed .
+
+[ 0.88148013  0.11851987] . . . silly humbuggery . . .
+
+[ 0.00699687  0.99300313] having never been a huge fan of dickens' 800-page novel , it surprised me how much pleasure i had watching mcgrath's version .
+
+[ 0.77440084  0.22559916] tres greek writer and star nia vardalos has crafted here a worldly-wise and very funny script .
+
+[ 0.66289183  0.33710817] forages for audience sympathy like a temperamental child begging for attention , giving audiences no reason to truly care for its decrepit freaks beyond the promise of a reprieve from their incessant whining .
+
+[ 0.87798878  0.12201122] however stale the material , lawrence's delivery remains perfect ; his great gift is that he can actually trick you into thinking some of this worn-out , pandering palaver is actually funny .
+
+[ 0.09909317  0.90090683] directors brett morgen and nanette burstein have put together a bold biographical fantasia .
+
+[ 0.84496176  0.15503824] suffocated at conception by its munchausen-by-proxy mum . punish the vehicle to adore the star .
+
+LEMMATIZING:
+
+Training Accuracy BernoulliNB: 0.955262
+Test Accuracy BernoulliNB: 0.748663
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.76      0.74      0.75      1803
+          -       0.74      0.76      0.75      1751
+
+avg / total       0.75      0.75      0.75      3554
+
+[ 0.50665158  0.49334842] with its dogged hollywood naturalism and the inexorable passage of its characters toward sainthood , windtalkers is nothing but a sticky-sweet soap .
+
+[ 0.03536714  0.96463286] scherfig , the writer-director , has made a film so unabashedly hopeful that it actually makes the heart soar . yes , soar .
+
+[ 0.16175019  0.83824981] it's more enjoyable than i expected , though , and that's because the laughs come from fairly basic comedic constructs . cinematic pratfalls given a working over . the cast is spot on and the mood is laid back .
+
+[ 0.13742948  0.86257052] the dirty jokes provide the funniest moments in this oddly sweet comedy about jokester highway patrolmen .
+
+[ 0.02966954  0.97033046] has the rare capability to soothe and break your heart with a single stroke .
+
+[ 0.00737283  0.99262717] an exceptionally acted , quietly affecting cop drama .
+
+[ 0.14392387  0.85607613] there is no insight into the anguish of heidi's life -- only a depiction of pain , today's version of greek tragedy , the talk-show guest decrying her fate .
+
+[ 0.02198161  0.97801839] [westbrook] makes a wonderful subject for the camera .
+
+[ 0.02415998  0.97584002] a new film from bill plympton , the animation master , is always welcome .
+
+[ 0.51654123  0.48345877] throwing caution to the wind with an invitation to the hedonist in us all , nair has constructed this motion picture in such a way that even the most cynical curmudgeon with find himself or herself smiling at one time or another .
+
+[ 0.54439961  0.45560039] the satire is just too easy to be genuinely satisfying .
+
+[ 0.46825108  0.53174892] romanek keeps adding flourishes -- artsy fantasy sequences -- that simply feel wrong . they cheapen the overall effect .
+
+[ 0.33097236  0.66902764] a tedious parable about honesty and good sportsmanship .
+
+[ 0.4920662  0.5079338] possession is elizabeth barrett browning meets nancy drew , and it's directed by . . . neil labute . hmm .
+
+[ 0.01887192  0.98112808] with a cast that includes some of the top actors working in independent film , lovely & amazing involves us because it is so incisive , so bleakly amusing about how we go about our lives .
+
+LEMMATIZING SIN STOPWORDS (PREPROCESADO):
+
+Training Accuracy BernoulliNB: 0.958638
+Test Accuracy BernoulliNB: 0.740782
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.75      0.73      0.74      1803
+          -       0.73      0.75      0.74      1751
+
+avg / total       0.74      0.74      0.74      3554
+
+[ 0.4045163  0.5954837] easily one of the best and most exciting movies of the year .
+
+[ 0.05628904  0.94371096] ong chooses to present ah na's life as a slight , weightless fairy tale , whose most unpleasant details seem to melt away in the face of the character's blank-faced optimism .
+
+[ 0.99645216  0.00354784] oh , it's extreme , all right . extremely dumb . extremely confusing . extremely boring .
+
+[ 0.48887786  0.51112214] the creaking , rusty ship makes a fine backdrop , but the ghosts' haunting is routine .
+
+[ 0.04618734  0.95381266] dense , exhilarating documentary .
+
+[ 0.25776872  0.74223128] very well-written and very well-acted .
+
+[ 0.67855945  0.32144055] it might be 'easier' to watch on video at home , but that shouldn't stop die-hard french film connoisseurs from going out and enjoying the big-screen experience .
+
+[ 0.29839961  0.70160039] [johnnie to and wai ka fai are] sure to find an enthusiastic audience among american action-adventure buffs , but the film's interests may be too narrow to attract crossover viewers .
+
+[ 0.66353472  0.33646528] a deliciously mordant , bitter black comedy .
+
+[ 0.78341859  0.21658141] i can't recommend it . but it's surprisingly harmless .
+
+[ 0.09643489  0.90356511] offers that rare combination of entertainment and education .
+
+[ 0.95738026  0.04261974] the most excruciating 86 minutes one might sit through this summer that do not involve a dentist drill .
+
+[ 0.03362067  0.96637933] argento , at only 26 , brings a youthful , out-to-change-the-world aggressiveness to the project , as if she's cut open a vein and bled the raw film stock .
+
+[ 0.97313913  0.02686087] bad company has one of the most moronic screenplays of the year , full of holes that will be obvious even to those who aren't looking for them .
+
+[ 0.90734024  0.09265976] the film is so busy making reference to other films and trying to be other films that it fails to have a heart , mind or humor of its own .
+
+
+ g) Naive Bayes Multinomial
+
+STEMMING:
+
+Training Accuracy MULTINOMIAL: 0.940630
+Test Accuracy MULTINOMIAL: 0.759921
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.76      0.77      0.76      1803
+          -       0.76      0.75      0.76      1751
+
+avg / total       0.76      0.76      0.76      3554
+
+[ 0.00722232  0.99277768] the film's best trick is the way that it treats conspiracy as a kind of political blair witch , a monstrous murk that haunts us precisely because it can never be seen .
+
+[ 0.93090634  0.06909366] cassavetes thinks he's making dog day afternoon with a cause , but all he's done is to reduce everything he touches to a shrill , didactic cartoon .
+
+[ 0.22699054  0.77300946] in between all the emotional seesawing , it's hard to figure the depth of these two literary figures , and even the times in which they lived . but they fascinate in their recklessness .
+
+[ 0.95881337  0.04118663] unfortunately , neither sendak nor the directors are particularly engaging or articulate .
+
+[ 0.00302526  0.99697474] a different kind of love story - one that is dark , disturbing , painful to watch , yet compelling .
+
+[ 0.70435569  0.29564431] gambling and throwing a basketball game for money isn't a new plot -- in fact toback himself used it in black and white . but toback's deranged immediacy makes it seem fresh again .
+
+[ 0.23695821  0.76304179] demonstrates the unusual power of thoughtful , subjective filmmaking .
+
+[ 0.79510641  0.20489359] dripping with cliche and bypassing no opportunity to trivialize the material .
+
+[ 0.93686449  0.06313551] ultimately feels like just one more in the long line of films this year about the business of making movies .
+
+[ 0.33887966  0.66112034] a thought-provoking picture .
+
+[ 0.02992502  0.97007498] while the film is not entirely successful , it still manages to string together enough charming moments to work .
+
+[ 0.22462922  0.77537078] bond-inspired ? certainly . likely to have decades of life as a classic movie franchise ? let's hope not .
+
+[ 0.86403779  0.13596221] most of the supporting characters in eastwood films are weak , as are most of the subplots . this one's weaker than most .
+
+[ 0.95654433  0.04345567] very stupid and annoying .
+
+[ 0.99371254  0.00628746] the reason i found myself finally unmoved by this film , which is immaculately produced and has serious things to say , is that it comes across rather too plainly as allegory .
+
+STEMMING SIN STOPWORDS (PREPROCESADO):
+
+Training Accuracy MULTINOMIAL: 0.943444
+Test Accuracy MULTINOMIAL: 0.750352
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.76      0.75      0.75      1803
+          -       0.74      0.75      0.75      1751
+
+avg / total       0.75      0.75      0.75      3554
+
+[ 0.30763916  0.69236084] [a] satisfying niblet .
+
+[ 0.23661878  0.76338122] less the sensational true-crime hell-jaunt purists might like and more experimental in its storytelling ( though no less horrifying for it ) .
+
+[ 0.04235289  0.95764711] a smart , steamy mix of road movie , coming-of-age story and political satire .
+
+[ 0.76089328  0.23910672] i can analyze this movie in three words : thumbs friggin' down .
+
+[ 0.87586985  0.12413015] this bond film goes off the beaten path , not necessarily for the better .
+
+[ 0.12352438  0.87647562] leaves us wondering less about its ideas and more about its characterization of hitler and the contrived nature of its provocative conclusion .
+
+[ 0.88042883  0.11957117] writer-director ritchie reduces wertmuller's social mores and politics to tiresome jargon .
+
+[ 0.72849469  0.27150531] it's the cinematic equivalent of a good page-turner , and even if it's nonsense , its claws dig surprisingly deep .
+
+[ 0.00867095  0.99132905] a shimmeringly lovely coming-of-age portrait , shot in artful , watery tones of blue , green and brown .
+
+[ 0.35015124  0.64984876] a chronicle not only of one man's quest to be president , but of how that man single-handedly turned a plane full of hard-bitten , cynical journalists into what was essentially , by campaign's end , an extended publicity department .
+
+[ 0.01699818  0.98300182] a rigorously structured and exquisitely filmed drama about a father and son connection that is a brief shooting star of love .
+
+[ 0.97065931  0.02934069] it's mighty tedious for the viewer who has to contend with unpleasant characters , hit-and-miss performances and awkwardly staged scenes .
+
+[ 0.8631606  0.1368394] almost everything about the film is unsettling , from the preposterous hairpiece worn by lai's villainous father to the endless action sequences .
+
+[ 0.00229892  0.99770108] an effortlessly accomplished and richly resonant work .
+
+[ 0.00852753  0.99147247] the unique niche of self-critical , behind-the-scenes navel-gazing kaufman has carved from orleans' story and his own infinite insecurity is a work of outstanding originality .
+
+LEMMATIZING:
+
+Training Accuracy MULTINOMIAL: 0.955543
+Test Accuracy MULTINOMIAL: 0.747537
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.75      0.75      0.75      1803
+          -       0.74      0.74      0.74      1751
+
+avg / total       0.75      0.75      0.75      3554
+
+[ 0.34272452  0.65727548] [director] byler may yet have a great movie in him , but charlotte sometimes is only half of one .
+
+[ 0.13907901  0.86092099] a potent allegorical love story .
+
+[ 0.18266334  0.81733666] [ferrera] has the charisma of a young woman who knows how to hold the screen .
+
+[ 0.04023945  0.95976055] karmen moves like rhythm itself , her lips chanting to the beat , her long , braided hair doing little to wipe away the jeweled beads of sweat .
+
+[ 0.03426773  0.96573227] captivates as it shows excess in business and pleasure , allowing us to find the small , human moments , and leaving off with a grand whimper .
+
+[ 0.5072176  0.4927824] the comedy is nonexistent .
+
+[ 0.89949656  0.10050344] it's been 13 months and 295 preview screenings since i last walked out on a movie , but resident evil really earned my indignant , preemptive departure .
+
+[ 0.67903572  0.32096428] while the now 72-year-old robert evans been slowed down by a stroke , he has at least one more story to tell : his own .
+
+[ 0.74253763  0.25746237] this sort of cute and cloying material is far from zhang's forte and it shows .
+
+[ 0.12833183  0.87166817] the screenplay is hugely overwritten , with tons and tons of dialogue -- most of it given to children .
+
+[ 0.47044574  0.52955426] witherspoon puts to rest her valley-girl image , but it's dench who really steals the show .
+
+[ 0.04783425  0.95216575] bluer than the atlantic and more biologically detailed than an autopsy , the movie . . . is , also , frequently hilarious .
+
+[ 0.04551749  0.95448251] the film's gamble to occasionally break up the live-action scenes with animated sequences pays off , as does its sensitive handling of some delicate subject matter .
+
+[ 0.718235  0.281765] sheds light on a subject few are familiar with , and makes you care about music you may not have heard before .
+
+[ 0.90079534  0.09920466] light , silly , photographed with colour and depth , and rather a good time .
+
+LEMMATIZING SIN STOPWORDS (PREPROCESADO):
+
+Training Accuracy MULTINOMIAL: 0.959482
+Test Accuracy MULTINOMIAL: 0.740501
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.75      0.73      0.74      1803
+          -       0.73      0.75      0.74      1751
+
+avg / total       0.74      0.74      0.74      3554
+
+[ 0.95611554  0.04388446] wallace directs with such patronising reverence , it turns the stomach .
+
+[ 0.3806612  0.6193388] star wars is back in a major way .
+
+[ 0.0979677  0.9020323] offers that rare combination of entertainment and education .
+
+[ 0.02871368  0.97128632] scherfig , the writer-director , has made a film so unabashedly hopeful that it actually makes the heart soar . yes , soar .
+
+[ 0.0056394  0.9943606] a rock-solid gangster movie with a fair amount of suspense , intriguing characters and bizarre bank robberies , plus a heavy dose of father-and-son dynamics .
+
+[ 0.99874249  0.00125751] it's frustrating to see these guys -- who are obviously pretty clever -- waste their talent on parodies of things they probably thought were funniest when they were high .
+
+[ 0.31893664  0.68106336] my wife is an actress is an utterly charming french comedy that feels so american in sensibility and style it's virtually its own hollywood remake .
+
+[ 0.03441778  0.96558222] 'compleja e intelectualmente retadora , el ladrón de orquídeas es uno de esos filmes que vale la pena ver precisamente por su originalidad . '
+
+[ 0.89035837  0.10964163] the heedless impetuousness of youth is on full , irritating display in [this] meandering and pointless french coming-of-age import from writer-director anne-sophie birot .
+
+[ 0.18567529  0.81432471] in between the icy stunts , the actors spout hilarious dialogue about following your dream and 'just letting the mountain tell you what to do . '
+
+[ 0.82901977  0.17098023] like a skillful fisher , the director uses the last act to reel in the audience since its poignancy hooks us completely .
+
+[ 0.1408716  0.8591284] the film falls short on tension , eloquence , spiritual challenge -- things that have made the original new testament stories so compelling for 20 centuries .
+
+[ 0.96196711  0.03803289] heavy-handed exercise in time-vaulting literary pretension .
+
+[ 0.85557644  0.14442356] the chateau has one very funny joke and a few other decent ones , but all it amounts to is a mildly funny , sometimes tedious , ultimately insignificant film .
+
+[ 0.20543572  0.79456428] mazel tov to a film about a family's joyous life acting on the yiddish stage .
+
+
+ h) RegresiÃ³n logÃ­stica regularizada con penalizador norma l_2
+
+STEMMING:
+
+Usando C= 0.010000
+Training Accuracy LOGISTIC: 0.741418
+Test Accuracy LOGISTIC: 0.677737
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.68      0.69      0.68      1803
+          -       0.68      0.67      0.67      1751
+
+avg / total       0.68      0.68      0.68      3554
+
+Usando C= 0.100000
+Training Accuracy LOGISTIC: 0.874226
+Test Accuracy LOGISTIC: 0.732902
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.73      0.74      0.74      1803
+          -       0.73      0.72      0.73      1751
+
+avg / total       0.73      0.73      0.73      3554
+
+Usando C= 10.000000
+Training Accuracy LOGISTIC: 1.000000
+Test Accuracy LOGISTIC: 0.735435
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.75      0.73      0.74      1803
+          -       0.73      0.75      0.74      1751
+
+avg / total       0.74      0.74      0.74      3554
+
+Usando C= 100.000000
+Training Accuracy LOGISTIC: 1.000000
+Test Accuracy LOGISTIC: 0.728399
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.74      0.72      0.73      1803
+          -       0.72      0.74      0.73      1751
+
+avg / total       0.73      0.73      0.73      3554
+
+Usando C= 1000.000000
+Training Accuracy LOGISTIC: 1.000000
+Test Accuracy LOGISTIC: 0.724177
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.74      0.71      0.72      1803
+          -       0.71      0.74      0.72      1751
+
+avg / total       0.72      0.72      0.72      3554
+
+	C = 0.01 :
+
+[ 0.55073778  0.44926222] the acting is fine but the script is about as interesting as a recording of conversations at the wal-mart checkout line .
+
+[ 0.42016742  0.57983258] becomes a fascinating study of isolation and frustration that successfully recreates both the physical setting and emotional tensions of the papin sisters .
+
+[ 0.49888508  0.50111492] historical dramas fused with love triangle is a well worn conceit . but this films lacks the passion required to sell the material .
+
+[ 0.61937505  0.38062495] all the more disquieting for its relatively gore-free allusions to the serial murders , but it falls down in its attempts to humanize its subject .
+
+[ 0.6787661  0.3212339] the only thing that could possibly make them less interesting than they already are is for them to get full montied into a scrappy , jovial team .
+
+[ 0.43473366  0.56526634] huston nails both the glad-handing and the choking sense of hollow despair .
+
+[ 0.45263712  0.54736288] a suffocating rape-payback horror show that hinges on the subgenre's most enabling victim . . . and an ebullient affection for industrial-model meat freezers .
+
+[ 0.48377231  0.51622769] schütte's dramatic snapshot of the artist three days before his death offers an interesting bit of speculation as to the issues brecht faced as his life drew to a close .
+
+[ 0.46843885  0.53156115] dogtown & z-boys evokes the blithe rebel fantasy with the kind of insouciance embedded in the sexy demise of james dean .
+
+[ 0.36380598  0.63619402] it rapidly develops into a gut-wrenching examination of the way cultural differences and emotional expectations collide .
+
+[ 0.53500455  0.46499545] girlfriends are bad , wives are worse and babies are the kiss of death in this bitter italian comedy .
+
+[ 0.535804  0.464196] this remake of lina wertmuller's 1975 eroti-comedy might just be the biggest husband-and-wife disaster since john and bo derek made the ridiculous bolero .
+
+[ 0.55665869  0.44334131] halloween : resurrection isn't exactly quality cinema , but it isn't nearly as terrible as it cold have been .
+
+[ 0.45120593  0.54879407] the only entertainment you'll derive from this choppy and sloppy affair will be from unintentional giggles – several of them .
+
+[ 0.53592327  0.46407673] frustratingly , dridi tells us nothing about el gallo other than what emerges through his music .
+
+	C = 0.1 :
+
+[ 0.58560424  0.41439576] looks and feels like a low-budget hybrid of scarface or carlito's way .
+
+[ 0.36029807  0.63970193] the filmmakers wisely decided to let crocodile hunter steve irwin do what he does best , and fashion a story around him .
+
+[ 0.47747637  0.52252363] a cautionary tale about the folly of superficiality that is itself endlessly superficial .
+
+[ 0.68196315  0.31803685] . . . begins with promise , but runs aground after being snared in its own tangled plot .
+
+[ 0.3393082  0.6606918] it's fun , splashy and entertainingly nasty .
+
+[ 0.31912218  0.68087782] the talents of the actors helps " moonlight mile " rise above its heart-on-its-sleeve writing .
+
+[ 0.45625543  0.54374457] how many more times will indie filmmakers subject us to boring , self-important stories of how horrible we are to ourselves and each other ?
+
+[ 0.29792694  0.70207306] the film gets close to the chimps the same way goodall did , with a serious minded patience , respect and affection .
+
+[ 0.92414075  0.07585925] it's tough to tell which is in more abundant supply in this woefully hackneyed movie , directed by scott kalvert , about street gangs and turf wars in 1958 brooklyn -- stale cliches , gratuitous violence , or empty machismo .
+
+[ 0.30314086  0.69685914] a spiffy animated feature about an unruly adolescent boy who is yearning for adventure and a chance to prove his worth .
+
+[ 0.88980709  0.11019291] the title's lameness should clue you in on how bad the movie is .
+
+[ 0.20309065  0.79690935] this story still seems timely and important . and there's an element of heartbreak to watching it now , with older and wiser eyes , because we know what will happen after greene's story ends .
+
+[ 0.44442268  0.55557732] a fantastically vital movie that manages to invest real humor , sensuality , and sympathy into a story about two adolescent boys .
+
+[ 0.82529274  0.17470726] i liked about schmidt a lot , but i have a feeling that i would have liked it much more if harry & tonto never existed .
+
+[ 0.6939244  0.3060756] a retread of material already thoroughly plumbed by martin scorsese .
+
+	C = 10 :
+
+[ 0.20685052  0.79314948] narc is a no-bull throwback to 1970s action films . it zips along with b-movie verve while adding the rich details and go-for-broke acting that heralds something special .
+
+[ 0.24185869  0.75814131] contando com uma premissa curiosa , o filme mergulha o espectador em um clima de forte suspense , culminando em um desfecho que certamente fica na memória .
+
+[ 0.95595612  0.04404388] a boring , formulaic mix of serial killers and stalk'n'slash .
+
+[ 0.10566232  0.89433768] the film is a verbal duel between two gifted performers .
+
+[ 0.7436271  0.2563729] a well-executed spy-thriller .
+
+[ 0.43158698  0.56841302] the early and middle passages are surprising in how much they engage and even touch us . this is not a classical dramatic animated feature , nor a hip , contemporary , in-jokey one . it's sort of in-between , and it works .
+
+[ 0.13245645  0.86754355] " my god , i'm behaving like an idiot ! " yes , you are , ben kingsley .
+
+[ 0.79675258  0.20324742] it is interesting and fun to see goodall and her chimpanzees on the bigger-than-life screen .
+
+[ 0.21936489  0.78063511] we can see the wheels turning , and we might resent it sometimes , but this is still a nice little picture , made by bright and friendly souls with a lot of good cheer .
+
+[ 0.09153972  0.90846028] a fascinating , bombshell documentary that should shame americans , regardless of whether or not ultimate blame finally lies with kissinger . should be required viewing for civics classes and would-be public servants alike .
+
+[  5.55415569e-04   9.99444584e-01] this odd , poetic road movie , spiked by jolts of pop music , pretty much takes place in morton's ever-watchful gaze -- and it's a tribute to the actress , and to her inventive director , that the journey is such a mesmerizing one .
+
+[ 0.26287225  0.73712775] late marriage's stiffness is unlikely to demonstrate the emotional clout to sweep u . s . viewers off their feet .
+
+[ 0.08143059  0.91856941] if religious films aren't your bailiwick , stay away . otherwise , this could be a passable date film .
+
+[ 0.97750619  0.02249381] a good-natured ensemble comedy that tries hard to make the most of a bumper cast , but never quite gets off the ground .
+
+[ 0.19864343  0.80135657] a sensitive and astute first feature by anne-sophie birot .
+
+	C = 100 :
+
+[ 0.34321981  0.65678019] the most hopelessly monotonous film of the year , noteworthy only for the gimmick of being filmed as a single unbroken 87-minute take .
+
+[ 0.99602712  0.00397288] ultimately feels like just one more in the long line of films this year about the business of making movies .
+
+[  2.67359129e-04   9.99732641e-01] a passionately inquisitive film determined to uncover the truth and hopefully inspire action .
+
+[ 0.97651125  0.02348875] the movie's plot is almost entirely witless and inane , carrying every gag two or three times beyond its limit to sustain a laugh .
+
+[  9.99834775e-01   1.65225051e-04] just too silly and sophomoric to ensnare its target audience .
+
+[ 0.18557984  0.81442016] if you love reading and/or poetry , then by all means check it out . you'll probably love it .
+
+[ 0.00690778  0.99309222] a stirring , funny and finally transporting re-imagining of beauty and the beast and 1930s horror films
+
+[ 0.27749693  0.72250307] evokes a palpable sense of disconnection , made all the more poignant by the incessant use of cell phones .
+
+[ 0.9113692  0.0886308] all that ( powerpuff girls ) charm is present in the movie , but it's spread too thin .
+
+[  9.99994475e-01   5.52543367e-06] when 'science fiction' takes advantage of the fact that its intended audience hasn't yet had much science , it does a disservice to the audience and to the genre .
+
+[  5.63025050e-04   9.99436975e-01] from a deceptively simple premise , this deeply moving french drama develops a startling story that works both as a detailed personal portrait and as a rather frightening examination of modern times .
+
+[  8.91305086e-04   9.99108695e-01] y tu mamá también is hilariously , gloriously alive , and quite often hotter than georgia asphalt .
+
+[  9.99815855e-01   1.84144505e-04] traffics in the kind of prechewed racial clichés that have already been through the corporate stand-up-comedy mill .
+
+[  9.99894448e-01   1.05552258e-04] all the more disquieting for its relatively gore-free allusions to the serial murders , but it falls down in its attempts to humanize its subject .
+
+[  9.99189939e-01   8.10060581e-04] this is really just another genre picture .
+
+	C = 1000 :
+
+[ 0.95110094  0.04889906] demands too much of most viewers .
+
+[ 0.0010621  0.9989379] a cockamamie tone poem pitched precipitously between swoony lyricism and violent catastrophe . . . the most aggressively nerve-wracking and screamingly neurotic romantic comedy in cinema history .
+
+[ 0.00105931  0.99894069] visually striking and viscerally repellent .
+
+[ 0.86587975  0.13412025] feels strangely hollow at its emotional core .
+
+[ 0.9696534  0.0303466] the performers are so spot on , it is hard to conceive anyone else in their roles .
+
+[  9.99999941e-01   5.85101838e-08] chelsea walls is a case of too many chefs fussing over too weak a recipe .
+
+[  5.68265347e-04   9.99431735e-01] arguably the best script that besson has written in years .
+
+[ 0.99515986  0.00484014] what little atmosphere is generated by the shadowy lighting , macabre sets , and endless rain is offset by the sheer ugliness of everything else .
+
+[ 0.8641779  0.1358221] god is great , the movie's not .
+
+[ 0.0645709  0.9354291] feels too formulaic and too familiar to produce the transgressive thrills of early underground work .
+
+[ 0.99707098  0.00292902] what the movie lacks in action it more than makes up for in drama , suspense , revenge , and romance .
+
+[ 0.86312248  0.13687752] the story is virtually impossible to follow here , but there's a certain style and wit to the dialogue .
+
+[ 0.49422469  0.50577531] a working class " us vs . them " opera that leaves no heartstring untugged and no liberal cause unplundered .
+
+[ 0.98924265  0.01075735] an unsuccessful attempt at a movie of ideas .
+
+[  9.99939357e-01   6.06429445e-05] its over-reliance on genre conventions , character types and formulaic conflict resolutions crushes all the goodwill it otherwise develops .
+
+STEMMING SIN STOPWORDS (PREPROCESADO):
+
+Usando C= 0.010000
+Training Accuracy LOGISTIC: 0.777715
+Test Accuracy LOGISTIC: 0.690684
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.68      0.73      0.71      1803
+          -       0.70      0.65      0.67      1751
+
+avg / total       0.69      0.69      0.69      3554
+
+Usando C= 0.100000
+Training Accuracy LOGISTIC: 0.883230
+Test Accuracy LOGISTIC: 0.731495
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.73      0.75      0.74      1803
+          -       0.74      0.71      0.72      1751
+
+avg / total       0.73      0.73      0.73      3554
+
+Usando C= 10.000000
+Training Accuracy LOGISTIC: 0.999719
+Test Accuracy LOGISTIC: 0.724740
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.73      0.73      0.73      1803
+          -       0.72      0.72      0.72      1751
+
+avg / total       0.72      0.72      0.72      3554
+
+Usando C= 100.000000
+Training Accuracy LOGISTIC: 1.000000
+Test Accuracy LOGISTIC: 0.714607
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.72      0.71      0.72      1803
+          -       0.71      0.72      0.71      1751
+
+avg / total       0.71      0.71      0.71      3554
+
+Usando C= 1000.000000
+Training Accuracy LOGISTIC: 1.000000
+Test Accuracy LOGISTIC: 0.709260
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.72      0.71      0.71      1803
+          -       0.70      0.71      0.71      1751
+
+avg / total       0.71      0.71      0.71      3554
+
+	C = 0.01 :
+
+[ 0.48322624  0.51677376] a smart , witty follow-up .
+
+[ 0.49190375  0.50809625] sit through this one , and you won't need a magic watch to stop time ; your dvd player will do it for you .
+
+[ 0.44153431  0.55846569] a comprehensive and provocative film -- one that pushes the boundaries of biography , and challenges its audience .
+
+[ 0.55681839  0.44318161] what happens when something goes bump in the night and nobody cares ?
+
+[ 0.45497662  0.54502338] for a film about explosions and death and spies , " ballistic : ecks vs . sever " seems as safe as a children's film . well , in some of those , the mother deer even dies .
+
+[ 0.50500204  0.49499796] exactly what it claims to be -- a simple diversion for the kids .
+
+[ 0.46921959  0.53078041] a delightful coming-of-age story .
+
+[ 0.45882599  0.54117401] the film grows on you . and how .
+
+[ 0.52982417  0.47017583] the importance of being earnest , so thick with wit it plays like a reading from bartlett's familiar quotations
+
+[ 0.5210912  0.4789088] it's a deeply serious movie that cares passionately about its subject , but too often becomes ponderous in its teaching of history , or lost in the intricate connections and multiple timelines of its story .
+
+[ 0.38371311  0.61628689] [city] reminds us how realistically nuanced a robert de niro performance can be when he is not more lucratively engaged in the shameless self-caricature of 'analyze this' ( 1999 ) and 'analyze that , ' promised ( or threatened ) for later this year .
+
+[ 0.49488631  0.50511369] has a shambling charm . . . a cheerfully inconsequential diversion .
+
+[ 0.44386145  0.55613855] the emotional overload of female angst irreparably drags the film down .
+
+[ 0.52521828  0.47478172] this sort of cute and cloying material is far from zhang's forte and it shows .
+
+[ 0.57711476  0.42288524] in the end , we are left with something like two ships passing in the night rather than any insights into gay love , chinese society or the price one pays for being dishonest .
+
+	C = 0.1 :
+
+[ 0.57847615  0.42152385] from the big giant titles of the opening credits to elmer bernstein's perfectly melodic score , haynes gets just about everything right .
+
+[ 0.47255661  0.52744339] such a fine idea for a film , and such a stultifying , lifeless execution .
+
+[ 0.56952402  0.43047598] like an afterschool special with costumes by gianni versace , mad love looks better than it feels .
+
+[ 0.52283263  0.47716737] most of the problems with the film don't derive from the screenplay , but rather the mediocre performances by most of the actors involved
+
+[ 0.42057879  0.57942121] despite the 2-d animation , the wild thornberrys movie makes for a surprisingly cinematic experience .
+
+[ 0.61887884  0.38112116] a cleverly crafted but ultimately hollow mockumentary .
+
+[ 0.60898066  0.39101934] national lampoon's van wilder could be the worst thing to come out of national lampoon since class reunion
+
+[ 0.50352062  0.49647938] if you're not a prepubescent girl , you'll be laughing at britney spears' movie-starring debut whenever it doesn't have you impatiently squinting at your watch .
+
+[ 0.57790644  0.42209356] amidst the action , the script carries arnold ( and the viewers ) into the forbidden zone of sympathizing with terrorist motivations by presenting the " other side of the story . "
+
+[ 0.4822009  0.5177991] sushi for the connoisseurs of the macabre .
+
+[ 0.35120051  0.64879949] the most remarkable ( and frustrating ) thing about world traveler , which opens today in manhattan , is that its protagonist , after being an object of intense scrutiny for 104 minutes , remains a complete blank .
+
+[ 0.37675547  0.62324453] conceptually brilliant . . . plays like a living-room war of the worlds , gaining most of its unsettling force from the suggested and the unknown .
+
+[ 0.62710199  0.37289801] in the era of the sopranos , it feels painfully redundant and inauthentic .
+
+[ 0.66549469  0.33450531] director tom dey demonstrated a knack for mixing action and idiosyncratic humor in his charming 2000 debut shanghai noon , but showtime's uninspired send-up of tv cop show cliches mostly leaves him shooting blanks .
+
+[ 0.43179849  0.56820151] matches neorealism's impact by showing the humanity of a war-torn land filled with people who just want to live their lives .
+
+	C = 10 :
+
+[ 0.8266945  0.1733055] the story and characters are nowhere near gripping enough .
+
+[ 0.29514674  0.70485326] the recording session is the only part of the film that is enlightening -- and how appreciative you are of this depends on your level of fandom .
+
+[ 0.74393048  0.25606952] a mix of velocity and idiocy , this ruinous remake lacks the brawn -- and the brains -- of the 1970s original .
+
+[ 0.33261841  0.66738159] somewhat blurred , but kinnear's performance is razor sharp .
+
+[ 0.95572223  0.04427777] everything else about high crimes is , like the military system of justice it portrays , tiresomely regimented .
+
+[ 0.19798907  0.80201093] it's at once laughable and compulsively watchable , in its committed dumbness .
+
+[ 0.9972065  0.0027935] the techno tux is good for a few laughs , as are chan and hewitt , but when such a good design turns out to be a cheap knockoff , we can't recommend anything but a rental for the tuxedo .
+
+[ 0.95746691  0.04253309] the two leads chomp considerably more scenery with their acting than fire-breathing monsters barbecue with their breath . . .
+
+[ 0.99865438  0.00134562] mckay deflates his piece of puffery with a sour cliche and heavy doses of mean-spiritedness
+
+[ 0.9557628  0.0442372] despite these annoyances , the capable clayburgh and tambor really do a great job of anchoring the characters in the emotional realities of middle age .
+
+[ 0.9960346  0.0039654] " 13 conversations " holds its goodwill close , but is relatively slow to come to the point .
+
+[  2.47587928e-05   9.99975241e-01] this illuminating documentary transcends our preconceived vision of the holy land and its inhabitants , revealing the human complexities beneath .
+
+[ 0.99646545  0.00353455] the only thing that could possibly make them less interesting than they already are is for them to get full montied into a scrappy , jovial team .
+
+[ 0.6650478  0.3349522] i can't say that i liked homeboy ; it'd be more accurate to say that i found it intriguing , bizarre , dogma-like in spots - and quite truthful , in its way .
+
+[  9.99551027e-01   4.48972872e-04] a tv episode inflated past its natural length .
+
+	C = 100 :
+
+[ 0.95853552  0.04146448] it's a boring movie about a boring man , made watchable by a bravura performance from a consummate actor incapable of being boring .
+
+[ 0.00643234  0.99356766] the film is insightful about kissinger's background and history .
+
+[  9.99997309e-01   2.69137651e-06] . . . a boring parade of talking heads and technical gibberish that will do little to advance the linux cause .
+
+[ 0.89148231  0.10851769] . . . the kind of movie you see because the theater has air conditioning .
+
+[ 0.99634805  0.00365195] if s&m seems like a strange route to true love , maybe it is , but it's to this film's ( and its makers' ) credit that we believe that that's exactly what these two people need to find each other -- and themselves .
+
+[ 0.64571357  0.35428643] a perfect example of rancid , well-intentioned , but shamelessly manipulative movie making .
+
+[ 0.07514745  0.92485255] not a schlocky creature feature but something far more stylish and cerebral--and , hence , more chillingly effective .
+
+[ 0.01202685  0.98797315] children and adults enamored of all things pokemon won't be disappointed .
+
+[ 0.00125133  0.99874867] waydowntown may not be an important movie , or even a good one , but it provides a nice change of mindless pace in collision with the hot oscar season currently underway .
+
+[ 0.00881237  0.99118763] even the finest chef can't make a hotdog into anything more than a hotdog , and robert de niro can't make this movie anything more than a trashy cop buddy comedy .
+
+[ 0.00274954  0.99725046] showtime is a fine-looking film with a bouncy score and a clutch of lively songs for deft punctuation .
+
+[  9.99411471e-01   5.88528685e-04] both the crime story and the love story are unusual . but they don't fit well together and neither is well told .
+
+[ 0.95055671  0.04944329] you have enough finely tuned acting to compensate for the movie's failings .
+
+[ 0.92761907  0.07238093] any movie that makes hard work seem heroic deserves a look .
+
+[  2.39954837e-04   9.99760045e-01] this is an undeniably intriguing film from an adventurous young talent who finds his inspiration on the fringes of the american underground .
+
+	C = 1000 :
+
+[ 0.32061829  0.67938171] it's almost as if it's an elaborate dare more than a full-blooded film .
+
+[ 0.94128016  0.05871984] it's as sorry a mess as its director's diabolical debut , mad cows .
+
+[ 0.14909033  0.85090967] candid camera on methamphetamines .
+
+[  8.19182406e-06   9.99991808e-01] a fascinating , dark thriller that keeps you hooked on the delicious pulpiness of its lurid fiction .
+
+[  3.41981417e-07   9.99999658e-01] yes , i suppose it's lovely that cal works out his issues with his dad and comes to terms with his picture-perfect life -- but world traveler gave me no reason to care , so i didn't .
+
+[ 0.59527888  0.40472112] the acting alone is worth the price of admission .
+
+[  1.41559020e-05   9.99985844e-01] until it goes off the rails in its final 10 or 15 minutes , wendigo , larry fessenden's spooky new thriller , is a refreshingly smart and newfangled variation on several themes derived from far less sophisticated and knowing horror films .
+
+[ 0.94040984  0.05959016] the cast has a high time , but de broca has little enthusiasm for such antique pulp .
+
+[ 0.49795917  0.50204083] i can't say that i liked homeboy ; it'd be more accurate to say that i found it intriguing , bizarre , dogma-like in spots - and quite truthful , in its way .
+
+[  5.31286126e-12   1.00000000e+00] cute , funny , heartwarming digitally animated feature film with plenty of slapstick humor for the kids , lots of in-jokes for the adults and heart enough for everyone .
+
+[ 0.98801388  0.01198612] a celebration of quirkiness , eccentricity , and certain individuals' tendency to let it all hang out , and damn the consequences .
+
+[  9.99139034e-01   8.60966414e-04] contains the humor , characterization , poignancy , and intelligence of a bad sitcom .
+
+[ 0.99359501  0.00640499] it's an old story , but a lively script , sharp acting and partially animated interludes make just a kiss seem minty fresh .
+
+[  9.99993437e-01   6.56278644e-06] the type of dumbed-down exercise in stereotypes that gives the [teen comedy] genre a bad name .
+
+[  9.95146171e-04   9.99004854e-01] this is an exercise in chilling style , and twohy films the sub , inside and out , with an eye on preserving a sense of mystery .
+
+LEMMATIZING:
+
+Usando C= 0.010000
+Training Accuracy LOGISTIC: 0.734102
+Test Accuracy LOGISTIC: 0.671827
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.68      0.68      0.68      1803
+          -       0.67      0.66      0.67      1751
+
+avg / total       0.67      0.67      0.67      3554
+
+Usando C= 0.100000
+Training Accuracy LOGISTIC: 0.879572
+Test Accuracy LOGISTIC: 0.718266
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.72      0.72      0.72      1803
+          -       0.71      0.72      0.72      1751
+
+avg / total       0.72      0.72      0.72      3554
+
+Usando C= 10.000000
+Training Accuracy LOGISTIC: 1.000000
+Test Accuracy LOGISTIC: 0.730932
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.74      0.72      0.73      1803
+          -       0.72      0.75      0.73      1751
+
+avg / total       0.73      0.73      0.73      3554
+
+Usando C= 100.000000
+Training Accuracy LOGISTIC: 1.000000
+Test Accuracy LOGISTIC: 0.724458
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.74      0.70      0.72      1803
+          -       0.71      0.75      0.73      1751
+
+avg / total       0.73      0.72      0.72      3554
+
+Usando C= 1000.000000
+Training Accuracy LOGISTIC: 1.000000
+Test Accuracy LOGISTIC: 0.720799
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.74      0.70      0.72      1803
+          -       0.70      0.75      0.72      1751
+
+avg / total       0.72      0.72      0.72      3554
+
+	C = 0.01 :
+
+[ 0.61865495  0.38134505] nonsensical , dull " cyber-horror " flick is a grim , hollow exercise in flat scares and bad acting .
+
+[ 0.52716514  0.47283486] a thought-provoking look at how western foreign policy - however well intentioned - can wreak havoc in other cultures .
+
+[ 0.46864558  0.53135442] a mix of velocity and idiocy , this ruinous remake lacks the brawn -- and the brains -- of the 1970s original .
+
+[ 0.667077  0.332923] ends up offering nothing more than the latest schwarzenegger or stallone flick would .
+
+[ 0.44926975  0.55073025] this version moves beyond the original's nostalgia for the communal film experiences of yesteryear to a deeper realization of cinema's inability to stand in for true , lived experience .
+
+[ 0.48370267  0.51629733] screenwriters scott abbott and michael petroni have turned rice's complex akasha into a cartoon monster .
+
+[ 0.41694265  0.58305735] [gulpilil] is a commanding screen presence , and his character's abundant humanism makes him the film's moral compass .
+
+[ 0.56235988  0.43764012] without resorting to hyperbole , i can state that kissing jessica stein may be the best same-sex romance i have seen .
+
+[ 0.50355202  0.49644798] starts as a tart little lemon drop of a movie and ends up as a bitter pill .
+
+[ 0.41821638  0.58178362] stevenson's performance is at once clueless and fiercely committed , a volatile combination .
+
+[ 0.53984589  0.46015411] less than fresh .
+
+[ 0.58567145  0.41432855] this wretchedly unfunny wannabe comedy is inane and awful - no doubt , it's the worst movie i've seen this summer .
+
+[ 0.56675171  0.43324829] de niro may enjoy the same free ride from critics afforded to clint eastwood in the lazy bloodwork . but like bruce springsteen's gone-to-pot asbury park , new jersey , this sad-sack waste of a movie is a city of ruins .
+
+[ 0.54488634  0.45511366] it's a road-trip drama with too many wrong turns .
+
+[ 0.59078291  0.40921709] the story is also as unoriginal as they come , already having been recycled more times than i'd care to count .
+
+	C = 0.1 :
+
+[ 0.64616062  0.35383938] a painfully slow cliche-ridden film filled with more holes than clyde barrow's car .
+
+[ 0.71829338  0.28170662] the movie occasionally threatens to become didactic , but it's too grounded in the reality of its characters to go over the edge . a touch of humor or an unexpected plot twist always pulls it back .
+
+[ 0.52785921  0.47214079] contrasting the original ringu with the current americanized adaptation is akin to comparing the evil dead with evil dead ii
+
+[ 0.24259774  0.75740226] if " lilo & stitch " isn't the most edgy piece of disney animation to hit the silver screen , then this first film to use a watercolor background since " dumbo " certainly ranks as the most original in years .
+
+[ 0.48533011  0.51466989] makmalbaf follows a resolutely realistic path in this uncompromising insight into the harsh existence of the kurdish refugees of iran's borderlands .
+
+[ 0.53275015  0.46724985] . . . another example of how sandler is losing his touch .
+
+[ 0.24408789  0.75591211] an off-beat and fanciful film about the human need for monsters to blame for all that is amiss in the world .
+
+[ 0.26590109  0.73409891] the lousy lead performances . . . keep the movie from ever reaching the comic heights it obviously desired .
+
+[ 0.46330411  0.53669589] screenwriters scott abbott and michael petroni have turned rice's complex akasha into a cartoon monster .
+
+[ 0.73411873  0.26588127] so unremittingly awful that labeling it a dog probably constitutes cruelty to canines .
+
+[ 0.53785411  0.46214589] more a load of enjoyable , conan-esque claptrap than the punishing , special-effects soul assaults the mummy pictures represent .
+
+[ 0.4032109  0.5967891] the mothman prophecies is best when illustrating the demons bedevilling the modern masculine journey .
+
+[ 0.45399518  0.54600482] to portray modern women the way director davis has done is just unthinkable .
+
+[ 0.40246332  0.59753668] secretary manages a neat trick , bundling the flowers of perversity , comedy and romance into a strangely tempting bouquet of a movie .
+
+[ 0.39253007  0.60746993] throwing caution to the wind with an invitation to the hedonist in us all , nair has constructed this motion picture in such a way that even the most cynical curmudgeon with find himself or herself smiling at one time or another .
+
+	C = 10 :
+
+[ 0.99848857  0.00151143] i can't remember the last time i saw worse stunt editing or cheaper action movie production values than in extreme ops .
+
+[ 0.00838069  0.99161931] alternately hilarious and sad , aggravating and soulful , scathing and joyous . it's a masterpeice .
+
+[ 0.99688038  0.00311962] while this gentle and affecting melodrama will have luvvies in raptures , it's far too slight and introspective to appeal to anything wider than a niche audience .
+
+[ 0.53747305  0.46252695] tailored to entertain !
+
+[ 0.4107815  0.5892185] sunshine state lacks the kind of dynamic that limbo offers , and in some ways is a rather indulgent piece .
+
+[ 0.87199005  0.12800995] there is a subversive element to this disney cartoon , providing unexpected fizzability .
+
+[ 0.03078017  0.96921983] most of crush is a clever and captivating romantic comedy with a welcome pinch of tartness .
+
+[ 0.13322833  0.86677167] to call this film a lump of coal would only be to flatter it .
+
+[ 0.86507091  0.13492909] a generic family comedy unlikely to be appreciated by anyone outside the under-10 set .
+
+[ 0.63148432  0.36851568] offers laughs and insight into one of the toughest ages a kid can go through .
+
+[ 0.83306278  0.16693722] it asks nothing of the audience other than to sit back and enjoy a couple of great actors hamming it up .
+
+[ 0.85102467  0.14897533] i'd be lying if i said my ribcage didn't ache by the end of kung pow .
+
+[ 0.00713835  0.99286165] it will break your heart many times over .
+
+[ 0.03218319  0.96781681] anchored by a terrific performance by abbass , satin rouge shows that the idea of women's self-actualization knows few continental divides .
+
+[ 0.05584352  0.94415648] witless , pointless , tasteless and idiotic .
+
+	C = 100 :
+
+[  4.64462724e-04   9.99535537e-01] still rapturous after all these years , cinema paradiso stands as one of the great films about movie love .
+
+[  9.99215755e-01   7.84245252e-04] the script's snazzy dialogue establishes a realistic atmosphere that involves us in the unfolding crisis , but the lazy plotting ensures that little of our emotional investment pays off .
+
+[ 0.94292329  0.05707671] frank capra played this story straight . but the 2002 film doesn't really believe in it , and breaks the mood with absurdly inappropriate 'comedy' scenes .
+
+[ 0.7303883  0.2696117] the story gives ample opportunity for large-scale action and suspense , which director shekhar kapur supplies with tremendous skill .
+
+[ 0.99630285  0.00369715] barney's ideas about creation and identity don't really seem all that profound , at least by way of what can be gleaned from this three-hour endurance test built around an hour's worth of actual material .
+
+[ 0.93336638  0.06663362] if nothing else , this movie introduces a promising , unusual kind of psychological horror .
+
+[  9.99691395e-01   3.08604697e-04] there's something auspicious , and daring , too , about the artistic instinct that pushes a majority-oriented director like steven spielberg to follow a . i . with this challenging report so liable to unnerve the majority .
+
+[  6.13201283e-05   9.99938680e-01] with this masterful , flawless film , [wang] emerges in the front ranks of china's now numerous , world-renowned filmmakers .
+
+[ 0.99826463  0.00173537] while we want macdowell's character to retrieve her husband , we have to ask whether her personal odyssey trumps the carnage that claims so many lives around her .
+
+[ 0.03634149  0.96365851] about schmidt is nicholson's goofy , heartfelt , mesmerizing king lear .
+
+[  1.16690520e-05   9.99988331e-01] so purely enjoyable that you might not even notice it's a fairly straightforward remake of hollywood comedies such as father of the bride .
+
+[ 0.18702053  0.81297947] [a] satisfying niblet .
+
+[  9.99994075e-01   5.92542154e-06] there are cheesy backdrops , ridiculous action sequences , and many tired jokes about men in heels .
+
+[ 0.92893935  0.07106065] it's not exactly worth the bucks to expend the full price for a date , but when it comes out on video , it's well worth a rental .
+
+[ 0.93190165  0.06809835] whether you like rap music or loathe it , you can't deny either the tragic loss of two young men in the prime of their talent or the power of this movie .
+
+	C = 1000 :
+
+[  9.42290273e-07   9.99999058e-01] for a long time the film succeeds with its dark , delicate treatment of these characters and its unerring respect for them .
+
+[  9.13978574e-08   9.99999909e-01] altogether , this is successful as a film , while at the same time being a most touching reconsideration of the familiar masterpiece .
+
+[ 0.99452435  0.00547565] in my own very humble opinion , in praise of love lacks even the most fragmented charms i have found in almost all of his previous works .
+
+[ 0.64473557  0.35526443] examines its explosive subject matter as nonjudgmentally as wiseman's previous studies of inner-city high schools , hospitals , courts and welfare centers .
+
+[ 0.99389011  0.00610989] wanders all over the map thematically and stylistically , and borrows heavily from lynch , jeunet , and von trier while failing to find a spark of its own .
+
+[  3.78013099e-04   9.99621987e-01] twenty years later , e . t . is still a cinematic touchstone .
+
+[ 0.00480249  0.99519751] 'the war of the roses , ' trailer-trash style . entertaining but like shooting fish in a barrel .
+
+[ 0.03314127  0.96685873] scores no points for originality , wit , or intelligence . it's a cookie-cutter movie , a cut-and-paste job .
+
+[  9.99999430e-01   5.70200071e-07] green might want to hang onto that ski mask , as robbery may be the only way to pay for his next project .
+
+[ 0.98491474  0.01508526] the film is ultimately about as inspiring as a hallmark card .
+
+[ 0.00155937  0.99844063] horns and halos benefits from serendipity but also reminds us of our own responsibility to question what is told as the truth .
+
+[ 0.02473447  0.97526553] even in terms of the low-grade cheese standards on which it operates , it never quite makes the grade as tawdry trash .
+
+[ 0.00110371  0.99889629] flawed but worthy look at life in u . s . relocation camps .
+
+[ 0.00543684  0.99456316] the sheer dumbness of the plot ( other than its one good idea ) and the movie's inescapable air of sleaziness get you down .
+
+[  1.04744436e-05   9.99989526e-01] a rigorously structured and exquisitely filmed drama about a father and son connection that is a brief shooting star of love .
+
+LEMMATIZING SIN STOPWORDS (PREPROCESADO):
+
+Usando C= 0.010000
+Training Accuracy LOGISTIC: 0.785031
+Test Accuracy LOGISTIC: 0.678863
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.67      0.73      0.70      1803
+          -       0.69      0.62      0.66      1751
+
+avg / total       0.68      0.68      0.68      3554
+
+Usando C= 0.100000
+Training Accuracy LOGISTIC: 0.891671
+Test Accuracy LOGISTIC: 0.720518
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.72      0.73      0.73      1803
+          -       0.72      0.71      0.72      1751
+
+avg / total       0.72      0.72      0.72      3554
+
+Usando C= 10.000000
+Training Accuracy LOGISTIC: 1.000000
+Test Accuracy LOGISTIC: 0.718266
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.73      0.71      0.72      1803
+          -       0.71      0.72      0.72      1751
+
+avg / total       0.72      0.72      0.72      3554
+
+Usando C= 100.000000
+Training Accuracy LOGISTIC: 1.000000
+Test Accuracy LOGISTIC: 0.708697
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.72      0.71      0.71      1803
+          -       0.70      0.71      0.71      1751
+
+avg / total       0.71      0.71      0.71      3554
+
+Usando C= 1000.000000
+Training Accuracy LOGISTIC: 1.000000
+Test Accuracy LOGISTIC: 0.707571
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.71      0.71      0.71      1803
+          -       0.70      0.71      0.71      1751
+
+avg / total       0.71      0.71      0.71      3554
+
+	C = 0.01 :
+
+[ 0.58411826  0.41588174] this is a movie that starts out like heathers , then becomes bring it on , then becomes unwatchable .
+
+[ 0.5059264  0.4940736] a rote exercise in both animation and storytelling .
+
+[ 0.42600517  0.57399483] there is nothing outstanding about this film , but it is good enough and will likely be appreciated most by sailors and folks who know their way around a submarine .
+
+[ 0.49021016  0.50978984] throwing caution to the wind with an invitation to the hedonist in us all , nair has constructed this motion picture in such a way that even the most cynical curmudgeon with find himself or herself smiling at one time or another .
+
+[ 0.46147936  0.53852064] an intimate contemplation of two marvelously messy lives .
+
+[ 0.49872008  0.50127992] the smug , oily demeanor that donovan adopts throughout the stupidly named pipe dream is just repulsive .
+
+[ 0.47497532  0.52502468] slight but enjoyable documentary .
+
+[ 0.52244311  0.47755689] slow , silly and unintentionally hilarious .
+
+[ 0.46371376  0.53628624] a stylish cast and some clever scripting solutions help chicago make the transition from stage to screen with considerable appeal intact .
+
+[ 0.59666239  0.40333761] too bad writer-director adam rifkin situates it all in a plot as musty as one of the golden eagle's carpets .
+
+[ 0.5235241  0.4764759] i'd be lying if i said my ribcage didn't ache by the end of kung pow .
+
+[ 0.44975459  0.55024541] broomfield is energized by volletta wallace's maternal fury , her fearlessness , and because of that , his film crackles .
+
+[ 0.50083266  0.49916734] may be the most undeserving victim of critical overkill since town and country .
+
+[ 0.57035369  0.42964631] the movie is a desperate miscalculation . it gives poor dana carvey nothing to do that is really funny , and then expects us to laugh because he acts so goofy all the time .
+
+[ 0.43554241  0.56445759] a hip ride into hyper-time , clockstoppers is a lively and enjoyable adventure for all ages at any time .
+
+	C = 0.1 :
+
+[ 0.76735976  0.23264024] if i could have looked into my future and saw how bad this movie was , i would go back and choose to skip it . fortunately , you still have that option .
+
+[ 0.41950164  0.58049836] you come away from his film overwhelmed , hopeful and , perhaps paradoxically , illuminated .
+
+[ 0.44241931  0.55758069] this may be the dumbest , sketchiest movie on record about an aspiring writer's coming-of-age .
+
+[ 0.47835947  0.52164053] an uplifting drama . . . what antwone fisher isn't , however , is original .
+
+[ 0.50529576  0.49470424] has enough wit , energy and geniality to please not only the fanatical adherents on either side , but also people who know nothing about the subject and think they're not interested .
+
+[ 0.61833541  0.38166459] flat , misguided comedy .
+
+[ 0.80403157  0.19596843] so stupid , so ill-conceived , so badly drawn , it created whole new levels of ugly .
+
+[ 0.54019878  0.45980122] jason x has cheesy effects and a hoary plot , but its macabre , self-deprecating sense of humor makes up for a lot .
+
+[ 0.58358887  0.41641113] an ambitious movie that , like shiner's organizing of the big fight , pulls off enough of its effects to make up for the ones that don't come off .
+
+[ 0.69240377  0.30759623] what starts off as a satisfying kids flck becomes increasingly implausible as it races through contrived plot points .
+
+[ 0.33858157  0.66141843] a thoroughly engaging , surprisingly touching british comedy .
+
+[ 0.21745192  0.78254808] few of the increasingly far-fetched events that first-time writer-director neil burger follows up with are terribly convincing , which is a pity , considering barry's terrific performance .
+
+[ 0.63601209  0.36398791] any enjoyment will be hinge from a personal threshold of watching sad but endearing characters do extremely unconventional things .
+
+[ 0.71626626  0.28373374] a surprisingly flat retread , hobbled by half-baked setups and sluggish pacing .
+
+[ 0.66824615  0.33175385] the attempt is courageous , even if the result is wildly uneven .
+
+	C = 10 :
+
+[ 0.48218978  0.51781022] a well made indieflick in need of some trims and a more chemistry between its stars .
+
+[ 0.98993663  0.01006337] in exactly 89 minutes , most of which passed as slowly as if i'd been sitting naked on an igloo , formula 51 sank from quirky to jerky to utter turkey .
+
+[ 0.90750049  0.09249951] it's one long bore .
+
+[ 0.64857819  0.35142181] a deliciously mordant , bitter black comedy .
+
+[ 0.9439436  0.0560564] it's fitting that a movie as artificial and soulless as the country bears owes its genesis to an animatronic display at disneyland .
+
+[ 0.92227881  0.07772119] an artful yet depressing film that makes a melodramatic mountain out of the molehill of a missing bike .
+
+[ 0.78346361  0.21653639] as it turns out , you can go home again .
+
+[ 0.42734892  0.57265108] a perfect example of rancid , well-intentioned , but shamelessly manipulative movie making .
+
+[ 0.89117348  0.10882652] serving sara should be served an eviction notice at every theater stuck with it .
+
+[ 0.97919868  0.02080132] with generic sets and b-grade special effects , jason is about as convincing on the sci-fi front as tv's defunct cleopatra 2525 .
+
+[ 0.98044808  0.01955192] not once in the rush to save the day did i become very involved in the proceedings ; to me , it was just a matter of 'eh . '
+
+[ 0.03075564  0.96924436] a beguiling evocation of the quality that keeps dickens evergreen : the exuberant openness with which he expresses our most basic emotions .
+
+[ 0.92798777  0.07201223] what starts off as a satisfying kids flck becomes increasingly implausible as it races through contrived plot points .
+
+[ 0.16205909  0.83794091] [reno] delivers a monologue that manages to incorporate both the horror and the absurdity of the situation in a well-balanced fashion .
+
+[ 0.55949615  0.44050385] boy , has this franchise ever run out of gas .
+
+	C = 100 :
+
+[ 0.03460337  0.96539663] speaks eloquently about the symbiotic relationship between art and life .
+
+[ 0.00828139  0.99171861] gets under the skin of a man who has just lost his wife .
+
+[ 0.92205447  0.07794553] it's predictable , but it jumps through the expected hoops with style and even some depth .
+
+[ 0.99785751  0.00214249] . . . a fascinating curiosity piece -- fascinating , that is , for about ten minutes . after that it becomes long and tedious like a classroom play in a college history course .
+
+[ 0.13847229  0.86152771] bullock does a good job here of working against her natural likability .
+
+[ 0.99657796  0.00342204] contains the humor , characterization , poignancy , and intelligence of a bad sitcom .
+
+[ 0.77916689  0.22083311] it all comes down to whether you can tolerate leon barlow . i can't .
+
+[ 0.99885195  0.00114805] the story of trouble every day . . . is so sketchy it amounts to little more than preliminary notes for a science-fiction horror film , and the movie's fragmentary narrative style makes piecing the story together frustrating difficult .
+
+[ 0.57987911  0.42012089] while there's something intrinsically funny about sir anthony hopkins saying 'get in the car , bitch , ' this jerry bruckheimer production has little else to offer
+
+[ 0.95446084  0.04553916] usually when i get this much syrup , i like pancakes to go with it .
+
+[ 0.58895896  0.41104104] hip-hop rarely comes alive as its own fire-breathing entity in this picture .
+
+[ 0.03700967  0.96299033] an unorthodox little film noir organized crime story that includes one of the strangest love stories you will ever see .
+
+[ 0.14515759  0.85484241] the talented and clever robert rodriguez perhaps put a little too much heart into his first film and didn't reserve enough for his second .
+
+[  1.49705802e-04   9.99850294e-01] a hypnotic portrait of this sad , compulsive life .
+
+[ 0.00476729  0.99523271] part of the film's cheeky charm comes from its vintage schmaltz .
+
+	C = 1000 :
+
+[ 0.00669449  0.99330551] a movie that harps on media-constructed 'issues' like whether compromise is the death of self… this orgasm [won't be an] exceedingly memorable one for most people .
+
+[ 0.53945254  0.46054746] a cautionary tale about the folly of superficiality that is itself endlessly superficial .
+
+[ 0.28162296  0.71837704] an ambitious movie that , like shiner's organizing of the big fight , pulls off enough of its effects to make up for the ones that don't come off .
+
+[ 0.25388893  0.74611107] if you've ever wondered what an ending without the input of studio executives or test audiences would look like , here it is .
+
+[ 0.66498983  0.33501017] " the tuxedo " should have been the vehicle for chan that " the mask " was for jim carrey . alas , it's the man that makes the clothes .
+
+[ 0.13536848  0.86463152] both damning and damned compelling .
+
+[ 0.00408773  0.99591227] unpretentious , charming , quirky , original
+
+[ 0.00276181  0.99723819] cantet beautifully illuminates what it means sometimes to be inside looking out , and at other times outside looking in .
+
+[ 0.01986176  0.98013824] true tale of courage -- and complicity -- at auschwitz is a harrowing drama that tries to tell of the unspeakable .
+
+[ 0.51582355  0.48417645] go see it and enjoy .
+
+[ 0.55953315  0.44046685] screenwriters scott abbott and michael petroni have turned rice's complex akasha into a cartoon monster .
+
+[ 0.00554559  0.99445441] a spiffy animated feature about an unruly adolescent boy who is yearning for adventure and a chance to prove his worth .
+
+[ 0.00266584  0.99733416] foster and whitaker are especially fine . she is a lioness , protecting her cub , and he a reluctant villain , incapable of controlling his crew .
+
+[ 0.62550913  0.37449087] i can't say that i liked homeboy ; it'd be more accurate to say that i found it intriguing , bizarre , dogma-like in spots - and quite truthful , in its way .
+
+[ 0.26185846  0.73814154] what's most memorable about circuit is that it's shot on digital video , whose tiny camera enables shafer to navigate spaces both large . . . and small . . . with considerable aplomb .
+
+
+ i) Support Vector Machine
+
+STEMMING:
+
+El valor de C que se esta probando: 0.010000
+Training Accuracy SVM: 0.869162
+Test Accuracy SVM: 0.730932
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.73      0.74      0.74      1803
+          -       0.73      0.72      0.72      1751
+
+avg / total       0.73      0.73      0.73      3554
+
+El valor de C que se esta probando: 0.100000
+Training Accuracy SVM: 0.983399
+Test Accuracy SVM: 0.739938
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.75      0.74      0.74      1803
+          -       0.73      0.74      0.74      1751
+
+avg / total       0.74      0.74      0.74      3554
+
+El valor de C que se esta probando: 10.000000
+Training Accuracy SVM: 1.000000
+Test Accuracy SVM: 0.717140
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.73      0.70      0.72      1803
+          -       0.70      0.73      0.72      1751
+
+avg / total       0.72      0.72      0.72      3554
+
+El valor de C que se esta probando: 100.000000
+Training Accuracy SVM: 1.000000
+Test Accuracy SVM: 0.715170
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.73      0.70      0.71      1803
+          -       0.70      0.73      0.72      1751
+
+avg / total       0.72      0.72      0.72      3554
+
+El valor de C que se esta probando: 1000.000000
+Training Accuracy SVM: 1.000000
+Test Accuracy SVM: 0.713482
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.73      0.70      0.71      1803
+          -       0.70      0.73      0.72      1751
+
+avg / total       0.71      0.71      0.71      3554
+
+	C = 0.01 :
+
+[ 0.5568239  0.4431761] jonah is only so-so . . . the addition of a biblical message will either improve the film for you , or it will lessen it .
+
+[ 0.5373732  0.4626268] this is nothing but familiar territory .
+
+[ 0.53333493  0.46666507] as vulgar as it is banal .
+
+[ 0.55205778  0.44794222] finally , a genre movie that delivers -- in a couple of genres , no less .
+
+[ 0.51450349  0.48549651] . . . has about 3/4th the fun of its spry 2001 predecessor — but it's a rushed , slapdash , sequel-for-the-sake- of-a-sequel with less than half the plot and ingenuity .
+
+[ 0.30356073  0.69643927] ice cube holds the film together with an engaging and warm performance . . .
+
+[ 0.50469099  0.49530901] this is mild-mannered , been-there material given a pedestrian spin by a director who needed a touch of the flamboyant , the outrageous .
+
+[ 0.45841128  0.54158872] a brisk , reverent , and subtly different sequel .
+
+[ 0.447826  0.552174] in his u . s . debut , mr . schnitzler proves himself a deft pace master and stylist .
+
+[ 0.53646782  0.46353218] melodrama with a message .
+
+[ 0.53372491  0.46627509] breen's script is sketchy with actorish notations on the margin of acting .
+
+[ 0.62286321  0.37713679] more than anything else , kissing jessica stein injects freshness and spirit into the romantic comedy genre , which has been held hostage by generic scripts that seek to remake sleepless in seattle again and again .
+
+[ 0.31821641  0.68178359] it's an unusual , thoughtful bio-drama with a rich subject and some fantastic moments and scenes .
+
+[ 0.54308724  0.45691276] if there's a way to effectively teach kids about the dangers of drugs , i think it's in projects like the ( unfortunately r-rated ) paid .
+
+[ 0.43722182  0.56277818] true tale of courage -- and complicity -- at auschwitz is a harrowing drama that tries to tell of the unspeakable .
+
+	C = 0.1 :
+
+[ 0.42786594  0.57213406] a pleasant , if forgettable , romp of a film .
+
+[ 0.31258293  0.68741707] kinnear and dafoe give what may be the performances of their careers .
+
+[ 0.53047688  0.46952312] a movie that's about as overbearing and over-the-top as the family it depicts .
+
+[ 0.54853607  0.45146393] theology aside , why put someone who ultimately doesn't learn at the center of a kids' story ?
+
+[ 0.41255087  0.58744913] my big fat greek wedding uses stereotypes in a delightful blend of sweet romance and lovingly dished out humor .
+
+[ 0.83755504  0.16244496] i can't remember the last time i saw worse stunt editing or cheaper action movie production values than in extreme ops .
+
+[ 0.34364495  0.65635505] runs on the pure adrenalin of pacino's performance .
+
+[ 0.54888532  0.45111468] any enjoyment will be hinge from a personal threshold of watching sad but endearing characters do extremely unconventional things .
+
+[ 0.79349809  0.20650191] whether it's the worst movie of 2002 , i can't say for sure : memories of rollerball have faded , and i skipped country bears . but this new jangle of noise , mayhem and stupidity must be a serious contender for the title .
+
+[ 0.25096084  0.74903916] by candidly detailing the politics involved in the creation of an extraordinary piece of music , [jones] calls our attention to the inherent conflict between commerce and creativity .
+
+[ 0.47128073  0.52871927] the director , steven shainberg , has succeeded by focusing intently on his characters , making them quirky individuals rather than figures of fun .
+
+[ 0.3656902  0.6343098] everything that has to do with yvan and charlotte , and everything that has to do with yvan's rambunctious , jewish sister and her non-jew husband , feels funny and true .
+
+[ 0.42242613  0.57757387] large budget notwithstanding , the movie is such a blip on the year's radar screen that it's tempting just to go with it for the ride . but this time , the old mib label stands for milder isn't better .
+
+[ 0.29590502  0.70409498] a brain twister , less a movie-movie than a funny and weird meditation on hollywood , success , artistic integrity and intellectual bankruptcy .
+
+[ 0.13046039  0.86953961] a poignant and compelling story about relationships , food of love takes us on a bumpy but satisfying journey of the heart .
+
+	C = 10 :
+
+[ 0.93255101  0.06744899] it's been 13 months and 295 preview screenings since i last walked out on a movie , but resident evil really earned my indignant , preemptive departure .
+
+[ 0.69481691  0.30518309] the château would have been benefited from a sharper , cleaner script before it went in front of the camera . not to mention a sharper , cleaner camera lens .
+
+[ 0.15101026  0.84898974] this is a nicely handled affair , a film about human darkness but etched with a light ( yet unsentimental ) touch .
+
+[ 0.54529319  0.45470681] o ótimo esforço do diretor acaba sendo frustrado pelo roteiro , que , depois de levar um bom tempo para colocar a trama em andamento , perde-se de vez a partir do instante em que os estranhos acontecimentos são explicados .
+
+[ 0.11733906  0.88266094] a rigorously structured and exquisitely filmed drama about a father and son connection that is a brief shooting star of love .
+
+[ 0.15641445  0.84358555] one of the most exciting action films to come out of china in recent years .
+
+[ 0.3187909  0.6812091] strange it is , but delightfully so .
+
+[ 0.87407098  0.12592902] what might have been readily dismissed as the tiresome rant of an aging filmmaker still thumbing his nose at convention takes a surprising , subtle turn at the midway point .
+
+[ 0.45044547  0.54955453] director claude chabrol has become the master of innuendo . it is not what you see , it is what you think you see .
+
+[ 0.5978636  0.4021364] it has the air of a surprisingly juvenile lark , a pop-influenced prank whose charms are immediately apparent and wear thin with repetition .
+
+[ 0.77161638  0.22838362] this is the kind of movie during which you want to bang your head on the seat in front of you , at its cluelessness , at its idiocy , at its utterly misplaced earnestness .
+
+[ 0.33943315  0.66056685] eight legged freaks ? no big hairy deal .
+
+[ 0.64263493  0.35736507] it virtually defines a comedy that's strongly mediocre , with funny bits surfacing every once in a while .
+
+[ 0.4969157  0.5030843] it's rather like a lifetime special -- pleasant , sweet and forgettable .
+
+[ 0.74112175  0.25887825] the writers , director wally wolodarsky , and all the actors should start their own coeducational fraternity : kappa rho alpha phi .
+
+	C = 100 :
+
+[ 0.32097405  0.67902595] you wouldn't want to live waydowntown , but it is a hilarious place to visit .
+
+[ 0.7342  0.2658] this formulaic chiller will do little to boost stallone's career .
+
+[ 0.73590533  0.26409467] the problems of the people in love in the time of money are hardly specific to their era . they just have problems , which are neither original nor are presented in convincing way .
+
+[ 0.74003139  0.25996861] what the movie lacks in action it more than makes up for in drama , suspense , revenge , and romance .
+
+[ 0.54996448  0.45003552] a strangely stirring experience that finds warmth in the coldest environment and makes each crumb of emotional comfort feel like a 10-course banquet .
+
+[ 0.15432581  0.84567419] because the genre is well established , what makes the movie fresh is smart writing , skewed characters , and the title performance by kieran culkin .
+
+[ 0.75333789  0.24666211] malone does have a gift for generating nightmarish images that will be hard to burn out of your brain . but the movie's narrative hook is way too muddled to be an effectively chilling guilty pleasure .
+
+[ 0.29143171  0.70856829] unlike lots of hollywood fluff , this has layered , well-developed characters and some surprises .
+
+[ 0.74130431  0.25869569] the master of disguise represents adam sandler's latest attempt to dumb down the universe .
+
+[ 0.55851867  0.44148133] it's a hoot and a half , and a great way for the american people to see what a candidate is like when he's not giving the same 15-cent stump speech .
+
+[ 0.32930161  0.67069839] a 94-minute travesty of unparalleled proportions , writer-director parker seems to go out of his way to turn the legendary wit's classic mistaken identity farce into brutally labored and unfunny hokum .
+
+[ 0.08433789  0.91566211] whatever one makes of its political edge , this is beautiful filmmaking from one of french cinema's master craftsmen .
+
+[ 0.23192746  0.76807254] 'rare birds' tries to force its quirkiness upon the audience .
+
+[ 0.57946663  0.42053337] as with too many studio pics , plot mechanics get in the way of what should be the lighter-than-air adventure .
+
+[ 0.709077  0.290923] if you're over 25 , have an iq over 90 , and have a driver's license , you should be able to find better entertainment .
+
+	C = 1000 :
+
+[ 0.3220307  0.6779693] as a rumor of angels reveals itself to be a sudsy tub of supernatural hokum , not even ms . redgrave's noblest efforts can redeem it from hopeless sentimentality .
+
+[ 0.40390287  0.59609713] the direction has a fluid , no-nonsense authority , and the performances by harris , phifer and cam'ron seal the deal .
+
+[ 0.16969699  0.83030301] best described as i know what you did last winter .
+
+[ 0.79183259  0.20816741] this romantic/comedy asks the question how much souvlaki can you take before indigestion sets in .
+
+[ 0.24280201  0.75719799] much of all about lily chou-chou is mesmerizing : some of its plaintiveness could make you weep .
+
+[ 0.27120891  0.72879109] offers enough playful fun to entertain the preschool set while embracing a wholesome attitude .
+
+[ 0.70827639  0.29172361] a great idea becomes a not-great movie .
+
+[ 0.18804718  0.81195282] the skirmishes for power waged among victims and predators settle into an undistinguished rhythm of artificial suspense .
+
+[ 0.12437911  0.87562089] the strength of the film lies in its two central performances by sven wollter as the stricken composer and viveka seldahl as his desperate violinist wife .
+
+[ 0.47528532  0.52471468] life is a crock -- or something like it .
+
+[ 0.4330782  0.5669218] feral and uncomfortable .
+
+[ 0.88333236  0.11666764] too bland and fustily tasteful to be truly prurient .
+
+[ 0.1188623  0.8811377] you come away from his film overwhelmed , hopeful and , perhaps paradoxically , illuminated .
+
+[ 0.10519737  0.89480263] if you can swallow its absurdities and crudities lagaan really is enormously good fun .
+
+[ 0.92293305  0.07706695] it's mildly interesting to ponder the peculiar american style of justice that plays out here , but it's so muddled and derivative that few will bother thinking it all through .
+
+STEMMING SIN STOPWORDS (PREPROCESADO):
+
+El valor de C que se esta probando: 0.010000
+Training Accuracy SVM: 0.877040
+Test Accuracy SVM: 0.731776
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.73      0.75      0.74      1803
+          -       0.74      0.71      0.72      1751
+
+avg / total       0.73      0.73      0.73      3554
+
+El valor de C que se esta probando: 0.100000
+Training Accuracy SVM: 0.981148
+Test Accuracy SVM: 0.730369
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.73      0.74      0.73      1803
+          -       0.73      0.73      0.73      1751
+
+avg / total       0.73      0.73      0.73      3554
+
+El valor de C que se esta probando: 10.000000
+Training Accuracy SVM: 1.000000
+Test Accuracy SVM: 0.698283
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.71      0.69      0.70      1803
+          -       0.69      0.71      0.70      1751
+
+avg / total       0.70      0.70      0.70      3554
+
+El valor de C que se esta probando: 100.000000
+Training Accuracy SVM: 1.000000
+Test Accuracy SVM: 0.694624
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.70      0.69      0.70      1803
+          -       0.69      0.70      0.69      1751
+
+avg / total       0.69      0.69      0.69      3554
+
+El valor de C que se esta probando: 1000.000000
+Training Accuracy SVM: 1.000000
+Test Accuracy SVM: 0.694624
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.70      0.69      0.70      1803
+          -       0.69      0.70      0.69      1751
+
+avg / total       0.69      0.69      0.69      3554
+
+	C = 0.01 :
+
+[ 0.59821236  0.40178764] doesn't really add up to much .
+
+[ 0.35599232  0.64400768] de niro and mcdormand give solid performances , but their screen time is sabotaged by the story's inability to create interest .
+
+[ 0.51559377  0.48440623] time literally stops on a dime in the tries-so-hard-to-be-cool " clockstoppers , " but that doesn't mean it still won't feel like the longest 90 minutes of your movie-going life .
+
+[ 0.41721392  0.58278608] these guys seem great to knock back a beer with but they're simply not funny performers .
+
+[ 0.48959915  0.51040085] it's not original enough .
+
+[ 0.37300775  0.62699225] nonchalantly freaky and uncommonly pleasurable , warm water may well be the year's best and most unpredictable comedy .
+
+[ 0.4909003  0.5090997] fuller would surely have called this gutsy and at times exhilarating movie a great yarn .
+
+[ 0.45111231  0.54888769] the 3-d vistas from orbit , with the space station suspended like a huge set of wind chimes over the great blue globe , are stanzas of breathtaking , awe-inspiring visual poetry .
+
+[ 0.48862503  0.51137497] mostly honest , this somber picture reveals itself slowly , intelligently , artfully .
+
+[ 0.53824257  0.46175743] this ludicrous film is predictable at every turn .
+
+[ 0.47255691  0.52744309] it's plotless , shapeless -- and yet , it must be admitted , not entirely humorless . indeed , the more outrageous bits achieve a shock-you-into-laughter intensity of almost dadaist proportions .
+
+[ 0.59932238  0.40067762] an operatic , sprawling picture that's entertainingly acted , magnificently shot and gripping enough to sustain most of its 170-minute length .
+
+[ 0.37743589  0.62256411] it made me want to get made-up and go see this movie with my sisters . i thought the relationships were wonderful , the comedy was funny , and the love 'real' .
+
+[ 0.48749202  0.51250798] boisterous and daft documentary .
+
+[ 0.50372815  0.49627185] sounding like arnold schwarzenegger , with a physique to match , [ahola] has a wooden delivery and encounters a substantial arc of change that doesn't produce any real transformation .
+
+	C = 0.1 :
+
+[ 0.61716239  0.38283761] has it ever been possible to say that williams has truly inhabited a character ? it is now .
+
+[ 0.38147368  0.61852632] directors brett morgen and nanette burstein have put together a bold biographical fantasia .
+
+[ 0.18034825  0.81965175] the film's best trick is the way that it treats conspiracy as a kind of political blair witch , a monstrous murk that haunts us precisely because it can never be seen .
+
+[ 0.79598645  0.20401355] . . . a boring parade of talking heads and technical gibberish that will do little to advance the linux cause .
+
+[ 0.57537305  0.42462695] the santa clause 2 is a barely adequate babysitter for older kids , but i've got to give it thumbs down .
+
+[ 0.41239336  0.58760664] apesar de seus graves problemas , o filme consegue entreter .
+
+[ 0.61584462  0.38415538] the two leads chomp considerably more scenery with their acting than fire-breathing monsters barbecue with their breath . . .
+
+[ 0.60706946  0.39293054] a clever blend of fact and fiction .
+
+[ 0.15036911  0.84963089] leaping from one arresting image to another , songs from the second floor has all the enjoyable randomness of a very lively dream and so manages to be compelling , amusing and unsettling at the same time .
+
+[ 0.46027619  0.53972381] winds up being both revelatory and narcissistic , achieving some honest insight into relationships that most high-concept films candy-coat with pat storylines , precious circumstances and beautiful stars .
+
+[ 0.66617052  0.33382948] unfunny comedy with a lot of static set ups , not much camera movement , and most of the scenes take place indoors in formal settings with motionless characters .
+
+[ 0.45136164  0.54863836] the subject of swinging still seems ripe for a documentary -- just not this one .
+
+[ 0.32933525  0.67066475] the film is about the relationships rather than about the outcome . and it sees those relationships , including that between the son and his wife , and the wife and the father , and between the two brothers , with incredible subtlety and acumen .
+
+[ 0.74430364  0.25569636] proves a servicable world war ii drama that can't totally hide its contrivances , but it at least calls attention to a problem hollywood too long has ignored .
+
+[ 0.23519144  0.76480856] an off-beat and fanciful film about the human need for monsters to blame for all that is amiss in the world .
+
+	C = 10 :
+
+[ 0.53092222  0.46907778] huston nails both the glad-handing and the choking sense of hollow despair .
+
+[ 0.46391787  0.53608213] elegantly produced and expressively performed , the six musical numbers crystallize key plot moments into minutely detailed wonders of dreamlike ecstasy .
+
+[ 0.59778513  0.40221487] fessenden's narrative is just as much about the ownership and redefinition of myth as it is about a domestic unit finding their way to joy .
+
+[ 0.514395  0.485605] the rest of the plot is impossible to explain without blowing whatever tension there is , although it's more comedy than suspense de palma creates .
+
+[ 0.43388434  0.56611566] emerges as something rare , an issue movie that's so honest and keenly observed that it doesn't feel like one .
+
+[ 0.933569  0.066431] an overblown clunker full of bad jokes , howling cliches and by-the-numbers action sequences .
+
+[ 0.05152023  0.94847977] the film's best trick is the way that it treats conspiracy as a kind of political blair witch , a monstrous murk that haunts us precisely because it can never be seen .
+
+[ 0.40043282  0.59956718] rain is a small treasure , enveloping the viewer in a literal and spiritual torpor that is anything but cathartic .
+
+[ 0.05939284  0.94060716] soderbergh , like kubrick before him , may not touch the planet's skin , but understands the workings of its spirit .
+
+[ 0.56276814  0.43723186] a manipulative feminist empowerment tale thinly posing as a serious drama about spousal abuse .
+
+[ 0.96584329  0.03415671] whether it's the worst movie of 2002 , i can't say for sure : memories of rollerball have faded , and i skipped country bears . but this new jangle of noise , mayhem and stupidity must be a serious contender for the title .
+
+[ 0.25050008  0.74949992] 77 minutes of pokemon may not last 4ever , it just seems like it does . my only wish is that celebi could take me back to a time before i saw this movie and i could just skip it .
+
+[ 0.17210712  0.82789288] binoche and magimel are perfect in these roles .
+
+[ 0.84535658  0.15464342] like a comedian who starts off promisingly but then proceeds to flop , comedian runs out of steam after a half hour .
+
+[ 0.54947543  0.45052457] any enjoyment will be hinge from a personal threshold of watching sad but endearing characters do extremely unconventional things .
+
+	C = 100 :
+
+[ 0.69828027  0.30171973] a mawkish self-parody that plays like some weird masterpiece theater sketch with neither a point of view nor a compelling reason for being .
+
+[ 0.19931701  0.80068299] the good girl is a film in which the talent is undeniable but the results are underwhelming .
+
+[ 0.30982041  0.69017959] [gulpilil] is a commanding screen presence , and his character's abundant humanism makes him the film's moral compass .
+
+[ 0.27462776  0.72537224] . . . a guiltless film for nice evening out .
+
+[ 0.6044247  0.3955753] resembles a soft porn brian de palma pastiche .
+
+[ 0.26210218  0.73789782] delia , greta , and paula rank as three of the most multilayered and sympathetic female characters of the year . as each of them searches for their place in the world , miller digs into their very minds to find an unblinking , flawed humanity .
+
+[ 0.30957591  0.69042409] some body smacks of exhibitionism more than it does cathartic truth telling .
+
+[ 0.16903699  0.83096301] the trials of henry kissinger is a remarkable piece of filmmaking … because you get it .
+
+[ 0.46060658  0.53939342] it collapses when mr . taylor tries to shift the tone to a thriller's rush .
+
+[ 0.40328459  0.59671541] kinnear and dafoe give what may be the performances of their careers .
+
+[ 0.78254286  0.21745714] a disturbing examination of what appears to be the definition of a 'bad' police shooting .
+
+[ 0.87116122  0.12883878] makes the same mistake as the music industry it criticizes , becoming so slick and watered-down it almost loses what made you love it in the first place .
+
+[ 0.53314369  0.46685631] the film is a travesty of the genre and even as spoof takes itself too seriously .
+
+[ 0.19151311  0.80848689] throwing caution to the wind with an invitation to the hedonist in us all , nair has constructed this motion picture in such a way that even the most cynical curmudgeon with find himself or herself smiling at one time or another .
+
+[ 0.41924716  0.58075284] scores no points for originality , wit , or intelligence . it's a cookie-cutter movie , a cut-and-paste job .
+
+	C = 1000 :
+
+[ 0.09934935  0.90065065] a minor-league soccer remake of the longest yard .
+
+[ 0.36105517  0.63894483] is not so much a work of entertainment as it is a unique , well-crafted psychological study of grief .
+
+[ 0.76430575  0.23569425] the film's final hour , where nearly all the previous unseen material resides , is unconvincing soap opera that tornatore was right to cut .
+
+[ 0.27371145  0.72628855] you'll end up moved .
+
+[ 0.33432436  0.66567564] confessions isn't always coherent , but it's sharply comic and surprisingly touching , so hold the gong .
+
+[ 0.88610477  0.11389523] the heedless impetuousness of youth is on full , irritating display in [this] meandering and pointless french coming-of-age import from writer-director anne-sophie birot .
+
+[ 0.70911784  0.29088216] everything in maid in manhattan is exceedingly pleasant , designed not to offend . it goes down easy , leaving virtually no aftertaste .
+
+[ 0.86841737  0.13158263] if legendary shlockmeister ed wood had ever made a movie about a vampire , it probably would look a lot like this alarming production , adapted from anne rice's novel the vampire chronicles .
+
+[ 0.78372836  0.21627164] though certainly original in form , altar boys requires a taste for swamp thing-type animation , doubled with a deafening score .
+
+[ 0.31440586  0.68559414] more trifle than triumph .
+
+[ 0.65996489  0.34003511] personal velocity ought to be exploring these women's inner lives , but it never moves beyond their surfaces .
+
+[ 0.26388032  0.73611968] these are textbook lives of quiet desperation .
+
+[ 0.84436881  0.15563119] it's better suited for the history or biography channel , but there's no arguing the tone of the movie - it leaves a bad taste in your mouth and questions on your mind .
+
+[ 0.46953847  0.53046153] the movie , while beautiful , feels labored , with a hint of the writing exercise about it .
+
+[ 0.40252774  0.59747226] . . . grows decidedly flimsier with its many out-sized , out of character and logically porous action set pieces .
+
+LEMMATIZING:
+
+El valor de C que se esta probando: 0.010000
+Training Accuracy SVM: 0.873382
+Test Accuracy SVM: 0.718829
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.72      0.72      0.72      1803
+          -       0.71      0.72      0.72      1751
+
+avg / total       0.72      0.72      0.72      3554
+
+El valor de C que se esta probando: 0.100000
+Training Accuracy SVM: 0.987901
+Test Accuracy SVM: 0.737968
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.75      0.73      0.74      1803
+          -       0.73      0.75      0.74      1751
+
+avg / total       0.74      0.74      0.74      3554
+
+El valor de C que se esta probando: 10.000000
+Training Accuracy SVM: 1.000000
+Test Accuracy SVM: 0.713482
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.73      0.69      0.71      1803
+          -       0.70      0.74      0.72      1751
+
+avg / total       0.71      0.71      0.71      3554
+
+El valor de C que se esta probando: 100.000000
+Training Accuracy SVM: 1.000000
+Test Accuracy SVM: 0.714607
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.73      0.69      0.71      1803
+          -       0.70      0.74      0.72      1751
+
+avg / total       0.72      0.71      0.71      3554
+
+El valor de C que se esta probando: 1000.000000
+Training Accuracy SVM: 1.000000
+Test Accuracy SVM: 0.714607
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.73      0.69      0.71      1803
+          -       0.70      0.74      0.72      1751
+
+avg / total       0.72      0.71      0.71      3554
+
+	C = 0.01 :
+
+[ 0.60416769  0.39583231] there is so much plodding sensitivity .
+
+[ 0.4996907  0.5003093] that zhang would make such a strainingly cute film -- with a blind orphan at its center , no less -- indicates where his ambitions have wandered .
+
+[ 0.51094753  0.48905247] each scene drags , underscoring the obvious , and sentiment is slathered on top .
+
+[ 0.53501409  0.46498591] you might say tykwer has done all that heaven allows , if you wanted to make as anti-kieslowski a pun as possible . suffice to say its total promise is left slightly unfulfilled .
+
+[ 0.62141449  0.37858551] despite hoffman's best efforts , wilson remains a silent , lumpish cipher ; his encounters reveal nothing about who he is or who he was before .
+
+[ 0.39485064  0.60514936] . . . a light , yet engrossing piece . lux , now in her eighties , does a great combination act as narrator , jewish grandmother and subject – taking us through a film that is part biography , part entertainment and part history .
+
+[ 0.41744415  0.58255585] the wanton slipperiness of * corpus and its amiable jerking and reshaping of physical time and space would make it a great piece to watch with kids and use to introduce video as art .
+
+[ 0.41885084  0.58114916] it's plotless , shapeless -- and yet , it must be admitted , not entirely humorless . indeed , the more outrageous bits achieve a shock-you-into-laughter intensity of almost dadaist proportions .
+
+[ 0.49451638  0.50548362] this may be the first cartoon ever to look as if it were being shown on the projection television screen of a sports bar .
+
+[ 0.47404565  0.52595435] a brain twister , less a movie-movie than a funny and weird meditation on hollywood , success , artistic integrity and intellectual bankruptcy .
+
+[ 0.47198615  0.52801385] with its lackadaisical plotting and mindless action , all about the benjamins evokes the bottom tier of blaxploitation flicks from the 1970s .
+
+[ 0.47583772  0.52416228] an animation landmark as monumental as disney's 1937 breakthrough snow white and the seven dwarfs .
+
+[ 0.38592751  0.61407249] a worthwhile documentary , whether you're into rap or not , even if it may still leave you wanting more answers as the credits roll .
+
+[ 0.49985711  0.50014289] the early and middle passages are surprising in how much they engage and even touch us . this is not a classical dramatic animated feature , nor a hip , contemporary , in-jokey one . it's sort of in-between , and it works .
+
+[ 0.45927862  0.54072138] unfortunately , a cast of competent performers from movies , television and the theater are cast adrift in various new york city locations with no unifying rhythm or visual style .
+
+	C = 0.1 :
+
+[ 0.58425024  0.41574976] the scriptwriters are no less a menace to society than the film's characters .
+
+[ 0.80309082  0.19690918] it's hard to imagine another director ever making his wife look so bad in a major movie .
+
+[ 0.32635775  0.67364225] charming and witty , it's also somewhat clumsy .
+
+[ 0.68709109  0.31290891] it could have been something special , but two things drag it down to mediocrity -- director clare peploe's misunderstanding of marivaux's rhythms , and mira sorvino's limitations as a classical actress .
+
+[ 0.58322692  0.41677308] so putrid it is not worth the price of the match that should be used to burn every print of the film .
+
+[ 0.49398667  0.50601333] the message is that even the most unlikely can link together to conquer all kinds of obstacles , whether they be of nature , of man or of one another .
+
+[ 0.58358338  0.41641662] nothing sticks , really , except a lingering creepiness one feels from being dragged through a sad , sordid universe of guns , drugs , avarice and damaged dreams .
+
+[ 0.47014977  0.52985023] the film starts out as competent but unremarkable . . . and gradually grows into something of considerable power .
+
+[ 0.34288909  0.65711091] it's still a comic book , but maguire makes it a comic book with soul .
+
+[ 0.71844266  0.28155734] reign of fire just might go down as one of the all-time great apocalypse movies .
+
+[ 0.30488002  0.69511998] time changer may not be the most memorable cinema session but its profound self-evaluation message about our fragile existence and the absence of spiritual guidance should at least invade an abundance of mindsets
+
+[ 0.42518485  0.57481515] the film fits into a genre that has been overexposed , redolent of a thousand cliches , and yet remains uniquely itself , vibrant with originality .
+
+[ 0.34644627  0.65355373] a huge box-office hit in korea , shiri is a must for genre fans .
+
+[ 0.4580116  0.5419884] a much more successful translation than its most famous previous film adaptation , writer-director anthony friedman's similarly updated 1970 british production .
+
+[ 0.61322263  0.38677737] it's mildly interesting to ponder the peculiar american style of justice that plays out here , but it's so muddled and derivative that few will bother thinking it all through .
+
+	C = 10 :
+
+[ 0.70320664  0.29679336] rarely , a movie is more than a movie . go .
+
+[ 0.91914111  0.08085889] the film's hackneyed message is not helped by the thin characterizations , nonexistent plot and pretentious visual style .
+
+[ 0.2739973  0.7260027] thriller directorial debut for traffic scribe gaghan has all the right parts , but the pieces don't quite fit together .
+
+[ 0.49744133  0.50255867] alternative medicine obviously has its merits . . . but ayurveda does the field no favors .
+
+[ 0.12361892  0.87638108] will you go ape over this movie ? well , it probably won't have you swinging from the trees hooting it's praises , but it's definitely worth taking a look .
+
+[ 0.65143256  0.34856744] sets up a nice concept for its fiftysomething leading ladies , but fails loudly in execution .
+
+[ 0.04194612  0.95805388] has the rare capability to soothe and break your heart with a single stroke .
+
+[ 0.21452208  0.78547792] mariah carey gives us another peek at some of the magic we saw in glitter here in wisegirls .
+
+[ 0.56163936  0.43836064] terrible .
+
+[ 0.20525511  0.79474489] an emotionally strong and politically potent piece of cinema .
+
+[ 0.36915931  0.63084069] offers a breath of the fresh air of true sophistication .
+
+[ 0.7761891  0.2238109] it was only a matter of time before some savvy producer saw the potential success inherent in the mixture of bullock bubble and hugh goo .
+
+[ 0.35682576  0.64317424] for the most part , it's a work of incendiary genius , steering clear of knee-jerk reactions and quick solutions .
+
+[ 0.34635906  0.65364094] . . . the kind of movie you see because the theater has air conditioning .
+
+[ 0.34337528  0.65662472] romanek keeps adding flourishes -- artsy fantasy sequences -- that simply feel wrong . they cheapen the overall effect .
+
+	C = 100 :
+
+[ 0.89095931  0.10904069] the somber pacing and lack of dramatic fireworks make green dragon seem more like medicine than entertainment .
+
+[ 0.727804  0.272196] ms . phoenix is completely lacking in charm and charisma , and is unable to project either esther's initial anomie or her eventual awakening .
+
+[ 0.20215491  0.79784509] director elie chouraqui , who co-wrote the script , catches the chaotic horror of war , but why bother if you're going to subjugate truth to the tear-jerking demands of soap opera ?
+
+[ 0.9056395  0.0943605] directed in a flashy , empty sub-music video style by a director so self-possessed he actually adds a period to his first name
+
+[ 0.22485607  0.77514393] if you think it's a riot to see rob schneider in a young woman's clothes , then you'll enjoy the hot chick .
+
+[ 0.11175802  0.88824198] despite its flaws , crazy as hell marks an encouraging new direction for la salle .
+
+[ 0.43941294  0.56058706] contrived pastiche of caper clichés .
+
+[ 0.45629169  0.54370831] director juan jose campanella could have turned this into an argentine retread of " iris " or " american beauty , " but instead pulls a little from each film and creates something more beautiful than either of those films .
+
+[ 0.49723879  0.50276121] any movie that makes hard work seem heroic deserves a look .
+
+[ 0.58413948  0.41586052] the transporter bombards the viewer with so many explosions and side snap kicks that it ends up being surprisingly dull .
+
+[ 0.26055804  0.73944196] it all adds up to good fun .
+
+[ 0.28251414  0.71748586] becomes a fascinating study of isolation and frustration that successfully recreates both the physical setting and emotional tensions of the papin sisters .
+
+[ 0.44104625  0.55895375] degenerates into hogwash .
+
+[ 0.38223743  0.61776257] i don't even care that there's no plot in this antonio banderas-lucy liu faceoff . it's still terrible !
+
+[ 0.50418486  0.49581514] this overproduced and generally disappointing effort isn't likely to rouse the rush hour crowd .
+
+	C = 1000 :
+
+[ 0.44309076  0.55690924] what doesn't this film have that an impressionable kid couldn't stand to hear ?
+
+[ 0.69819079  0.30180921] wanders all over the map thematically and stylistically , and borrows heavily from lynch , jeunet , and von trier while failing to find a spark of its own .
+
+[ 0.61199292  0.38800708] at its best , queen is campy fun like the vincent price horror classics of the '60s . at its worst , it implodes in a series of very bad special effects .
+
+[ 0.87034508  0.12965492] if it's another regurgitated action movie you're after , there's no better film than half past dead .
+
+[ 0.33465436  0.66534564] very well-written and very well-acted .
+
+[ 0.35099956  0.64900044] depicts the sorriest and most sordid of human behavior on the screen , then laughs at how clever it's being .
+
+[ 0.30424287  0.69575713] none of birthday girl's calculated events take us by surprise . . .
+
+[ 0.58671366  0.41328634] not as good as the full monty , but a really strong second effort .
+
+[ 0.46744603  0.53255397] a taut psychological thriller that doesn't waste a moment of its two-hour running time .
+
+[ 0.36506805  0.63493195] from the big giant titles of the opening credits to elmer bernstein's perfectly melodic score , haynes gets just about everything right .
+
+[ 0.27491332  0.72508668] strange it is , but delightfully so .
+
+[ 0.30333713  0.69666287] there's a delightfully quirky movie to be made from curling , but brooms isn't it .
+
+[ 0.2790012  0.7209988] stevenson's performance is at once clueless and fiercely committed , a volatile combination .
+
+[ 0.11748305  0.88251695] berry's saucy , full-bodied performance gives this aging series a much needed kick , making " die another day " one of the most entertaining bonds in years
+
+[ 0.49638151  0.50361849] a incompetência de marcus adams como roteirista só é superada por sua péssima direção .
+
+LEMMATIZING SIN STOPWORDS (PREPROCESADO):
+
+El valor de C que se esta probando: 0.010000
+Training Accuracy SVM: 0.886044
+Test Accuracy SVM: 0.718266
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.72      0.73      0.72      1803
+          -       0.72      0.71      0.71      1751
+
+avg / total       0.72      0.72      0.72      3554
+
+El valor de C que se esta probando: 0.100000
+Training Accuracy SVM: 0.989589
+Test Accuracy SVM: 0.723051
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.73      0.72      0.73      1803
+          -       0.72      0.73      0.72      1751
+
+avg / total       0.72      0.72      0.72      3554
+
+El valor de C que se esta probando: 10.000000
+Training Accuracy SVM: 1.000000
+Test Accuracy SVM: 0.696032
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.70      0.70      0.70      1803
+          -       0.69      0.70      0.69      1751
+
+avg / total       0.70      0.70      0.70      3554
+
+El valor de C que se esta probando: 100.000000
+Training Accuracy SVM: 1.000000
+Test Accuracy SVM: 0.693498
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.70      0.69      0.70      1803
+          -       0.69      0.70      0.69      1751
+
+avg / total       0.69      0.69      0.69      3554
+
+El valor de C que se esta probando: 1000.000000
+Training Accuracy SVM: 1.000000
+Test Accuracy SVM: 0.693217
+Detailed Analysis Testing Results ...
+             precision    recall  f1-score   support
+
+          +       0.70      0.69      0.70      1803
+          -       0.69      0.70      0.69      1751
+
+avg / total       0.69      0.69      0.69      3554
+
+	C = 0.01 :
+
+[ 0.40458606  0.59541394] you see robert de niro singing - and dancing to - west side story show tunes . choose your reaction : a . ) that sure is funny ! b . ) that sure is pathetic !
+
+[ 0.49703276  0.50296724] is it a total success ? no . is it something any true film addict will want to check out ? you bet .
+
+[ 0.47903967  0.52096033] for those of an indulgent , slightly sunbaked and summery mind , sex and lucia may well prove diverting enough .
+
+[ 0.54601484  0.45398516] washington overcomes the script's flaws and envelops the audience in his character's anguish , anger and frustration .
+
+[ 0.46305712  0.53694288] matches neorealism's impact by showing the humanity of a war-torn land filled with people who just want to live their lives .
+
+[ 0.55928096  0.44071904] the twist that ends the movie is the one with the most emotional resonance , but twists are getting irritating , and this is the kind of material where the filmmakers should be very careful about raising eyebrows .
+
+[ 0.606819  0.393181] a tired , unnecessary retread . . . a stale copy of a picture that wasn't all that great to begin with .
+
+[ 0.43479656  0.56520344] although frailty fits into a classic genre , in its script and execution it is a remarkably original work .
+
+[ 0.47359787  0.52640213] the film has just enough of everything -- re-enactments , archival footage , talking-head interviews -- and the music is simply sublime .
+
+[ 0.46940975  0.53059025] deliberately and skillfully uses ambiguity to suggest possibilities which imbue the theme with added depth and resonance .
+
+[ 0.43961081  0.56038919] coy but exhilarating , with really solid performances by ving rhames and wesley snipes .
+
+[ 0.39339377  0.60660623] the plan to make enough into ‘an inspiring tale of survival wrapped in the heart-pounding suspense of a stylish psychological thriller' has flopped as surely as a soufflé gone wrong .
+
+[ 0.37087176  0.62912824] this is a film brimming with detail and nuance and one that speaks volumes about the ability of the human spirit to find solace in events that could easily crush it forever .
+
+[ 0.35838693  0.64161307] this may not have the dramatic gut-wrenching impact of other holocaust films , but it's a compelling story , mainly because of the way it's told by the people who were there .
+
+[ 0.45523242  0.54476758] russian ark is a new treasure of the hermitage .
+
+	C = 0.1 :
+
+[ 0.48586763  0.51413237] passion , melodrama , sorrow , laugther , and tears cascade over the screen effortlessly . . .
+
+[ 0.53447899  0.46552101] noyce has worked wonders with the material .
+
+[ 0.51148442  0.48851558] the acting alone is worth the price of admission .
+
+[ 0.34947175  0.65052825] he's the scariest guy you'll see all summer .
+
+[ 0.6321285  0.3678715] it's as sorry a mess as its director's diabolical debut , mad cows .
+
+[ 0.39472892  0.60527108] what's surprising about full frontal is that despite its overt self-awareness , parts of the movie still manage to break past the artifice and thoroughly engage you .
+
+[ 0.59664687  0.40335313] sluggish , tonally uneven .
+
+[ 0.33065312  0.66934688] arteta paints a picture of lives lived in a state of quiet desperation .
+
+[ 0.34793004  0.65206996] the filmmakers try to balance pointed , often incisive satire and unabashed sweetness , with results that are sometimes bracing , sometimes baffling and quite often , and in unexpected ways , touching .
+
+[ 0.61926607  0.38073393] no aspirations to social import inform the movie version . this is a shameless sham , calculated to cash in on the popularity of its stars .
+
+[ 0.58551358  0.41448642] almost everything about the film is unsettling , from the preposterous hairpiece worn by lai's villainous father to the endless action sequences .
+
+[ 0.32193306  0.67806694] at heart the movie is a deftly wrought suspense yarn whose richer shadings work as coloring rather than substance .
+
+[ 0.44057323  0.55942677] a very good film sits in the place where a masterpiece should be .
+
+[ 0.74335281  0.25664719] the venezuelans say things like " si , pretty much " and " por favor , go home " when talking to americans . that's muy loco , but no more ridiculous than most of the rest of " dragonfly . "
+
+[ 0.67914036  0.32085964] meandering and glacially paced , and often just plain dull .
+
+	C = 10 :
+
+[ 0.34889946  0.65110054] . . . a guiltless film for nice evening out .
+
+[ 0.18323402  0.81676598] in its chicken heart , crush goes to absurd lengths to duck the very issues it raises .
+
+[ 0.50484296  0.49515704] the dirty jokes provide the funniest moments in this oddly sweet comedy about jokester highway patrolmen .
+
+[ 0.33403915  0.66596085] macdowell . . . gives give a solid , anguished performance that eclipses nearly everything else she's ever done .
+
+[ 0.23712921  0.76287079] sparkles in its deft portrait of tinseltown's seasoned veterans of gossip , wealth , paranoia , and celebrityhood .
+
+[ 0.30965145  0.69034855] [a] thoughtful , visually graceful work .
+
+[ 0.89894144  0.10105856] the one not-so-small problem with expecting is that the entire exercise has no real point .
+
+[ 0.82781608  0.17218392] this is really just another genre picture .
+
+[ 0.51955319  0.48044681] guy gets girl , guy loses girl , audience falls asleep .
+
+[ 0.44044319  0.55955681] this may be the dumbest , sketchiest movie on record about an aspiring writer's coming-of-age .
+
+[ 0.30641224  0.69358776] [reno] delivers a monologue that manages to incorporate both the horror and the absurdity of the situation in a well-balanced fashion .
+
+[ 0.07356177  0.92643823] zhang yimou delivers warm , genuine characters who lie not through dishonesty , but because they genuinely believe it's the only way to bring happiness to their loved ones .
+
+[ 0.58899745  0.41100255] . . . either you're willing to go with this claustrophobic concept or you're not .
+
+[ 0.44004703  0.55995297] denver should not get the first and last look at one of the most triumphant performances of vanessa redgrave's career . it deserves to be seen everywhere .
+
+[ 0.24067714  0.75932286] the cast . . . keeps this pretty watchable , and casting mick jagger as director of the escort service was inspired .
+
+	C = 100 :
+
+[ 0.04220187  0.95779813] as much as i laughed throughout the movie , i cannot mount a cogent defense of the film as entertainment , or even performance art , although the movie does leave you marveling at these guys' superhuman capacity to withstand pain .
+
+[ 0.51200546  0.48799454] your children will be occupied for 72 minutes .
+
+[ 0.39038481  0.60961519] passion , melodrama , sorrow , laugther , and tears cascade over the screen effortlessly . . .
+
+[ 0.85877802  0.14122198] the makers of mothman prophecies succeed in producing that most frightening of all movies -- a mediocre horror film too bad to be good and too good to be bad .
+
+[ 0.09553482  0.90446518] merely as a technical , logistical feat , russian ark marks a cinematic milestone .
+
+[ 0.30130388  0.69869612] a delicious and delicately funny look at the residents of a copenhagen neighborhood coping with the befuddling complications life tosses at them .
+
+[ 0.1035587  0.8964413] a rare and lightly entertaining look behind the curtain that separates comics from the people laughing in the crowd .
+
+[ 0.37332878  0.62667122] the filmmakers try to balance pointed , often incisive satire and unabashed sweetness , with results that are sometimes bracing , sometimes baffling and quite often , and in unexpected ways , touching .
+
+[ 0.80408189  0.19591811] it's best to avoid imprisonment with the dull , nerdy folks that inhabit cherish .
+
+[ 0.90656853  0.09343147] at some point , all this visual trickery stops being clever and devolves into flashy , vaguely silly overkill .
+
+[ 0.39208741  0.60791259] the plot of the comeback curlers isn't very interesting actually , but what i like about men with brooms and what is kind of special is how the film knows what's unique and quirky about canadians .
+
+[ 0.68882521  0.31117479] stale and clichéd to a fault .
+
+[ 0.8405827  0.1594173] " the road paved with good intentions leads to the video store "
+
+[ 0.29207715  0.70792285] one of those energetic surprises , an original that pleases almost everyone who sees it .
+
+[ 0.36113381  0.63886619] those with a modicum of patience will find in these characters' foibles a timeless and unique perspective .
+
+	C = 1000 :
+
+[ 0.82253331  0.17746669] most of the problems with the film don't derive from the screenplay , but rather the mediocre performances by most of the actors involved
+
+[ 0.80885141  0.19114859] features nonsensical and laughable plotting , wooden perflibpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+ormances , ineptly directed action sequences and some of the worst dialogue in recent memory .
+
+[ 0.87994334  0.12005666] i can't say this enough : this movie is about an adult male dressed in pink jammies .
+
+[ 0.23746026  0.76253974] the plot is romantic comedy boilerplate from start to finish .
+
+[ 0.81410336  0.18589664] the story feels more like a serious read , filled with heavy doses of always enticing sayles dialogue .
+
+[ 0.26178958  0.73821042] a fascinating , dark thriller that keeps you hooked on the delicious pulpiness of its lurid fiction .
+
+[ 0.17595714  0.82404286] the film may not hit as hard as some of the better drug-related pictures , but it still manages to get a few punches in .
+
+[ 0.47131151  0.52868849] if you are into splatter movies , then you will probably have a reasonably good time with the salton sea .
+
+[ 0.23210347  0.76789653] a good piece of work more often than not .
+
+[ 0.67649785  0.32350215] . . . lacks the punch and verve needed to make this genre soar .
+
+[ 0.01949295  0.98050705] k-19 will not go down in the annals of cinema as one of the great submarine stories , but it is an engaging and exciting narrative of man confronting the demons of his own fear and paranoia .
+
+[ 0.54552858  0.45447142] brainy , artistic and muted , almost to the point of suffocation .
+
+[ 0.41361996  0.58638004] if there's one thing this world needs less of , it's movies about college that are written and directed by people who couldn't pass an entrance exam .
+
+[ 0.01184461  0.98815539] fans of critics' darling band wilco will marvel at the sometimes murky , always brooding look of i am trying to break your heart .
+
+[ 0.31593345  0.68406655] as the dominant christine , sylvie testud is icily brilliant .
+

@@ -15,6 +15,9 @@ from sklearn.linear_model import LogisticRegression
 #from sklearn.svm import LinearSVC
 from prob_svm import LinearSVC_proba as LinearSVC
 import random
+import matplotlib.pyplot as plt
+
+
 
 
 # Parte a)
@@ -135,7 +138,7 @@ labels_test = np.asarray((test_df.Sentiment.astype(float)+1)/2.0)
 #Switch: 2: sólo hace stemming (se demora menos), 4: procesa además lemmatizer (más costoso)
 
 
-my_switch = 1
+my_switch = 4
 
 texts_train[0] = [word_extractor(text) for text in train_df.Text]
 texts_test[0] = [word_extractor(text) for text in test_df.Text]
@@ -175,17 +178,20 @@ for i in range(0,my_switch ,1):
         print "Top10 palabras: LEMMATIZING SIN STOPWORDS (PREPROCESADO):\n"
 
     print "\tTraining data:"
-    print sorted(count_train[i], key=lambda x: x[1], reverse=True)[:100]
+    print "\t"+str(sorted(count_train[i], key=lambda x: x[1], reverse=True)[:100])
 
     dist_test[i] = list(np.array(features_test[i].sum(axis=0)).reshape(-1,))
     count_test[i] = zip(vocab[i], dist_test[i])
-    print "tTest data:"
-    print sorted(count_test[i], key=lambda x: x[1], reverse=True)[:100]
+    print "\tTest data:"
+    print "\t"+str(sorted(count_test[i], key=lambda x: x[1], reverse=True)[:100])
 
 
 
 #Parte e)
 
+global_accuracies=[]; #<-Me odio por esto
+
+print "\n /*Parte e) no imprime nada*/ \n"
 def score_the_model(model, x, y, xt, yt, text):
     acc_tr = model.score(x, y)
     acc_test = model.score(xt[:-1], yt[:-1])
@@ -193,7 +199,7 @@ def score_the_model(model, x, y, xt, yt, text):
     print "Test Accuracy %s: %f" % (text, acc_test)
     print "Detailed Analysis Testing Results ..."
     print(classification_report(yt, model.predict(xt), target_names=['+', '-']))
-
+    global_accuracies.append((acc_tr,acc_test)) # Cada vez que esto se ejecuta muere un gatito. 48 gatitos muetos :C
 
 #Parte f)
 def do_NAIVE_BAYES(x, y, xt, yt):
@@ -309,5 +315,69 @@ for i in range(0,my_switch ,1):
             print sentiment, text
 
 #Parte j)
-#HERE BE DRAGONS
+plot_labels = [
+      "NB_S"
+    , "NB_SP"
+    , "NB_L"
+    , "NB_LP"
+    , "MN_S"
+    , "MN_SP"
+    , "MN_L"
+    , "MN_LP"
+    , "LO_S_-2"
+    , "LO_S_-1"
+    , "LO_S_+1"
+    , "LO_S_+2"
+    , "LO_S_+3"
+    , "LO_SP_-2"
+    , "LO_SP_-1"
+    , "LO_SP_+1"
+    , "LO_SP_+2"
+    , "LO_SP_+3"
+    , "LO_L_-2"
+    , "LO_L_-1"
+    , "LO_L_+1"
+    , "LO_L_+2"
+    , "LO_L_+3"
+    , "LO_LP_-2"
+    , "LO_LP_-1"
+    , "LO_LP_+1"
+    , "LO_LP_+2"
+    , "LO_LP_+3"
+    , "SV_S_-2"
+    , "SV_S_-1"
+    , "SV_S_+1"
+    , "SV_S_+2"
+    , "SV_S_+3"
+    , "SV_SP_-2"
+    , "SV_SP_-1"
+    , "SV_SP_+1"
+    , "SV_SP_+2"
+    , "SV_SP_+3"
+    , "SV_L_-2"
+    , "SV_L_-1"
+    , "SV_L_+1"
+    , "SV_L_+2"
+    , "SV_L_+3"
+    , "SV_LP_-2"
+    , "SV_LP_-1"
+    , "SV_LP_+1"
+    , "SV_LP_+2"
+    , "SV_LP_+3"
+]
 
+tr_accuracy = [item[0] for item in global_accuracies]
+test_accuracy = [item[1] for item in global_accuracies]
+
+ayuda=[]
+for i in range(1,len(test_accuracy)+1):
+	ayuda.append(i)
+
+
+
+
+plt.plot( ayuda, test_accuracy)
+plt.plot( ayuda, tr_accuracy)
+plt.xticks(ayuda, plot_labels, rotation=90)
+plt.legend(['Test accuracies', 'Training Accuracies'], loc='upper left')
+plt.show()
